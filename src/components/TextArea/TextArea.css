@@ -1,0 +1,15 @@
+.textArea-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.textArea-group textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    resize: vertical;
+}
