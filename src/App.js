@@ -10,6 +10,7 @@ import QuemSomos from "./pages/QuemSomos";
 import DefaultPage from "./components/DefaultPage";
 import Menu from "./components/Menu";
 import Rodape from "components/Rodape";
+import CadastroLoja from "pages/CadastroLoja";
 
 function App() {
   return (
@@ -24,6 +25,8 @@ function App() {
             <Route path="quem-somos" element={<QuemSomos />} />
             <Route path="faq" element={<Faq />} />
             <Route path="login" element={<Login />} />
+
+            <Route path="cadastro-loja" element={<CadastroLoja />} />
           </Route>
         </Routes>
 
