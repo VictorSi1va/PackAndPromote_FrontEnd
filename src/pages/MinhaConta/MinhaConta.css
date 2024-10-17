@@ -1,0 +1,51 @@
+.minha-conta-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    flex-wrap: wrap;
+}
+
+.minha-conta-container .conta-section, 
+.minha-conta-container .plano-section {
+    width: 43%;
+    padding: 30px;
+    margin-bottom: 10px;
+    color: #787878;
+}
+
+.plano-name {
+    font-weight: bold;
+}
+
+.button-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 15px;
+}
+
+.plano-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.plano-renova {
+    color: #787878;
+    font-weight: bold;
+    background-color: #f0f0f0;
+    padding: 12px;
+    border-radius: 20px;
+}
+
+.plano-buttons {
+    display: flex;
+    gap: 5px;
+}
+
+@media (max-width: 990px) {
+    .minha-conta-container .conta-section, 
+    .minha-conta-container .plano-section {
+        width: 90%;
+    }
+}

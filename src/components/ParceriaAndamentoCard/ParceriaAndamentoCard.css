@@ -1,0 +1,129 @@
+.parceria-andamento-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  background-color: #fff;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.parceria-andamento-left {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+}
+
+.parceria-andamento-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.parceria-andamento-logo {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+  border-radius: 8px;
+}
+
+.parceria-andamento-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.parceria-andamento-status {
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.parceria-andamento-status.ativa {
+  background-color: #e6ffed;
+  color: #34c759;
+}
+
+.parceria-andamento-status.em-pausa {
+  background-color: #fff7e6;
+  color: #ffa500;
+}
+
+.info-box-parceria-andamento {
+  background-color: #f7f7f7;
+  border-radius: 20px;
+  margin-bottom: 10px;
+  padding: 20px;
+}
+
+.info-box-parceria-andamento p {
+  color: #999;
+  margin: 0;
+}
+
+.info-box-parceria-andamento h4 {
+  font-size: 1.4rem;
+  margin: 5px 0;
+  color: #333;
+}
+
+.parceria-andamento-right {
+  display: flex;
+  justify-content: space-between;
+  width: 65%;
+}
+
+.chart-parceria-andamento {
+  width: 43%;
+  padding: 20px;
+  background-color: #f7f7f7;
+  border-radius: 20px;
+  text-align: center;
+  margin-bottom: 10px;
+  margin-top: 74px;
+}
+
+.bar-chart-parceria-andamento {
+  height: 120px;
+  background-color: #5393f7;
+  border-radius: 8px;
+}
+
+.pie-chart-parceria-andamento {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  background-color: #f7f7f7;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: inset 0 0 0 10px #e0e0e0, inset 0 0 0 30px #5393f7;
+  margin-left: 35%;
+}
+
+.pie-chart-parceria-andamento span {
+  position: absolute;
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #666;
+}
+
+@media (max-width: 768px) {
+  .parceria-andamento-card {
+    flex-direction: column;
+  }
+
+  .parceria-andamento-right {
+    width: 100%;
+    margin-top: 20px;
+    flex-direction: column;
+  }
+
+  .chart-parceria-andamento {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}

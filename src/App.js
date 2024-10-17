@@ -11,6 +11,8 @@ import DefaultPage from "./components/DefaultPage";
 import Menu from "./components/Menu";
 import Rodape from "components/Rodape";
 import CadastroLoja from "pages/CadastroLoja";
+import MinhaConta from "pages/MinhaConta";
+import Parcerias from "pages/Parcerias";
 
 function App() {
   return (
@@ -27,6 +29,9 @@ function App() {
             <Route path="login" element={<Login />} />
 
             <Route path="cadastro-loja" element={<CadastroLoja />} />
+
+            <Route path="parcerias" element={<Parcerias />} />
+            <Route path="minha-conta" element={<MinhaConta />} />
           </Route>
         </Routes>
 
