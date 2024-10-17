@@ -1,0 +1,38 @@
+.nova-parceria-card {
+    width: 120px;
+    text-align: center;
+    padding: 10px;
+    border-radius: 20px;
+    background-color: transparent;
+    box-shadow: none;
+    transition: transform 0.3s ease;
+}
+
+.nova-parceria-card:hover {
+    transform: translateY(-5px);
+}
+
+.logo-container {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    border-radius: 16px;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nova-parceria-logo {
+    width: 80%;
+    height: 80%;
+    object-fit: contain;
+    border-radius: 12px;
+}
+
+.nova-parceria-title {
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 10px;
+    font-weight: 500;
+}

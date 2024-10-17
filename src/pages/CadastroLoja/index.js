@@ -3,9 +3,13 @@ import Select from 'components/Select';
 import TextArea from 'components/TextArea';
 import Input from 'components/Input';
 import './CadastroLoja.css';
+import Button from 'components/Button';
+import Title from 'components/Title';
 
 const CadastroLoja = () => {
     const [formData, setFormData] = useState({
+        usuario: '',
+        senha: '',
         nomeDaLoja: 'Pack and Promote',
         cnpj: '',
         descricaoDaLoja: '',
@@ -17,6 +21,8 @@ const CadastroLoja = () => {
     });
 
     const lojaPreenchidaExemplo = {
+        usuario: 'admin',
+        senha: 'admin',
         nomeDaLoja: 'Pack and Promote',
         cnpj: '12.345.678/0001-99',
         descricaoDaLoja: 'Loja especializada em embalagens personalizadas.',
@@ -46,13 +52,30 @@ const CadastroLoja = () => {
 
     return (
         <div className="cadastro-loja-container">
-            <h1>Cadastro Loja</h1>
+            <Title titulo="Cadastro Loja" />
+            
             <form onSubmit={handleSubmit}>
+                <Input
+                    label="Usuário"
+                    name="usuario"
+                    value={formData.usuario}
+                    onChange={handleChange}
+                    placeholder="Digite o usuário"
+                />
+
+                <Input
+                    label="Senha"
+                    name="senha"
+                    value={formData.senha}
+                    onChange={handleChange}
+                    placeholder="Digite a senha"
+                />
+
                 <Input
                     label="Nome da Loja"
                     name="nomeDaLoja"
                     value={formData.nomeDaLoja}
-                    onChange={handleChange}                    
+                    onChange={handleChange}
                     placeholder="Digite o nome da loja"
                 />
 
@@ -112,7 +135,7 @@ const CadastroLoja = () => {
                     options={preferenciasParcerias}
                 />
 
-                <button type="submit">Salvar</button>
+                <Button label="Salvar" onClick={() => alert('Loja Cadastrada')}/>
             </form>
         </div>
     );

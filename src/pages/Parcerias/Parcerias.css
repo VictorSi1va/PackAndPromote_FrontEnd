@@ -1,0 +1,18 @@
+.parcerias-container {
+    padding: 20px;
+    text-align: center;
+    background-color: white;
+}
+
+.parcerias-title {
+    font-size: 1.8rem;
+    color: #5393f7;
+    margin-bottom: 30px;
+}
+
+.parcerias-list {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
