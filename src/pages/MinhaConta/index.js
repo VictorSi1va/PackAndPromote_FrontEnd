@@ -10,12 +10,15 @@ const MinhaConta = () => {
   const [userData, setUserData] = useState({
     lojaNome: 'Pack and Promote',
     cnpj: '20.031.219/0002-46',
+    endereco: 'Rua 7 de Setembro, SP, BR',
+    telefone: '(11) 91234-5678',
+    email: 'email@dominio.com',
     descricao: 'Pack and Promote Company',
-    categoria: 'Eletrônicos',
+    categoria: 'Delivery',
     publicoAlvo: 'Adultos',
     idade: '26-35',
     regiao: 'Sudeste',
-    preferenciaParceria: 'Sim'
+    preferenciaParceria: 'Promoções'
   });
 
   const [planoData, setPlanoData] = useState({
@@ -26,11 +29,11 @@ const MinhaConta = () => {
     dataRenovacao: '05/12/2024'
   });
 
-  const categorias = ['Alimentos', 'Roupas', 'Eletrônicos', 'Livros'];
-  const publicosAlvo = ['Adultos', 'Crianças', 'Idosos'];
-  const idades = ['18-25', '26-35', '36-50', 'Acima de 50'];
+  const categorias = ['Delivery', 'Embalagem', 'Loja'];
+  const publicosAlvo = ['Adultos', 'Adolescentes'];
+  const idades = ['18-25', '26-35', '36-45'];
   const regioes = ['Norte', 'Nordeste', 'Sul', 'Sudeste', 'Centro-Oeste'];
-  const preferenciasParcerias = ['Sim', 'Não', 'Talvez'];
+  const preferenciasParcerias = ['Promoções', 'Novidades'];
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -43,7 +46,7 @@ const MinhaConta = () => {
   return (
     <div className="minha-conta-container">
       <div className="conta-section">
-        <Title titulo2="C o n t a"/>
+        <Title titulo2="C o n t a" />
         <Input
           label="Nome da loja"
           name="lojaNome"
@@ -58,6 +61,30 @@ const MinhaConta = () => {
           value={userData.cnpj}
           onChange={handleChange}
           placeholder="Digite o CNPJ"
+        />
+
+        <Input
+          label="Endereço"
+          name="endereco"
+          value={userData.endereco}
+          onChange={handleChange}
+          placeholder="Digite o endereço"
+        />
+
+        <Input
+          label="Telefone"
+          name="telefone"
+          value={userData.telefone}
+          onChange={handleChange}
+          placeholder="Digite o telefone"
+        />
+
+        <Input
+          label="E-mail"
+          name="email"
+          value={userData.email}
+          onChange={handleChange}
+          placeholder="Digite o e-mail"
         />
 
         <TextArea
@@ -114,7 +141,7 @@ const MinhaConta = () => {
       </div>
 
       <div className="plano-section">
-        <Title titulo2="P l a n o"/>
+        <Title titulo2="P l a n o" />
 
         <div className="plano-details">
           <h3 className="plano-name">Plano {planoData.nomePlano}</h3>

@@ -10,8 +10,11 @@ const CadastroLoja = () => {
     const [formData, setFormData] = useState({
         usuario: '',
         senha: '',
-        nomeDaLoja: 'Pack and Promote',
+        nomeDaLoja: '',
         cnpj: '',
+        endereco: '',
+        telefone: '',
+        email: '',
         descricaoDaLoja: '',
         categoria: '',
         publicoAlvo: '',
@@ -33,11 +36,11 @@ const CadastroLoja = () => {
         preferenciaParcerias: 'Sim'
     };
 
-    const categorias = ['Alimentos', 'Roupas', 'Eletrônicos', 'Livros'];
-    const publicosAlvo = ['Adultos', 'Crianças', 'Idosos'];
-    const idades = ['18-25', '26-35', '36-50', 'Acima de 50'];
+    const categorias = ['Delivery', 'Embalagem', 'Loja'];
+    const publicosAlvo = ['Adultos', 'Adolescentes'];
+    const idades = ['18-25', '26-35', '36-45'];
     const regioes = ['Norte', 'Nordeste', 'Sul', 'Sudeste', 'Centro-Oeste'];
-    const preferenciasParcerias = ['Sim', 'Não', 'Talvez'];
+    const preferenciasParcerias = ['Promoções', 'Novidades'];
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -53,7 +56,7 @@ const CadastroLoja = () => {
     return (
         <div className="cadastro-loja-container">
             <Title titulo="Cadastro Loja" />
-            
+
             <form onSubmit={handleSubmit}>
                 <Input
                     label="Usuário"
@@ -85,6 +88,30 @@ const CadastroLoja = () => {
                     value={formData.cnpj}
                     onChange={handleChange}
                     placeholder="Digite o CNPJ"
+                />
+
+                <Input
+                    label="Endereço"
+                    name="endereco"
+                    value={formData.enderecoLoja}
+                    onChange={handleChange}
+                    placeholder="Digite o endereço"
+                />
+
+                <Input
+                    label="Telefone"
+                    name="telefone"
+                    value={formData.telefoneLoja}
+                    onChange={handleChange}
+                    placeholder="Digite o telefone"
+                />
+
+                <Input
+                    label="E-mail"
+                    name="email"
+                    value={formData.emailLoja}
+                    onChange={handleChange}
+                    placeholder="Digite o e-mail"
                 />
 
                 <TextArea
@@ -135,7 +162,7 @@ const CadastroLoja = () => {
                     options={preferenciasParcerias}
                 />
 
-                <Button label="Salvar" onClick={() => alert('Loja Cadastrada')}/>
+                <Button label="Salvar" onClick={() => alert('Loja Cadastrada')} />
             </form>
         </div>
     );
