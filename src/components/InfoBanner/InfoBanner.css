@@ -1,0 +1,131 @@
+.info-banner {
+    padding: 40px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #FFFFFF;
+    flex-wrap: wrap; /* Para permitir que os elementos se reorganizem em telas menores */
+    gap: 20px;
+}
+
+.info-banner-content {
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.text-content {
+    flex: 2;
+    padding-right: 20px;
+}
+
+.info-banner-title {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.info-banner-subtitle {
+    font-size: 28px;
+    font-weight: 500;
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
+
+.info-banner-content-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.info-banner-paragraph {
+    margin-bottom: 5px;
+    line-height: 1.6;
+    font-size: 18px;
+}
+
+.info-banner-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #FFFFFF;
+    background-color: #5393f7;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.info-banner-button:hover {
+    background-color: #4077c0;
+}
+
+.info-banner-image {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.info-banner-image-principal {
+    max-width: 300px;
+    width: 100%;
+    opacity: 1;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .info-banner {
+        flex-direction: column;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .info-banner-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .text-content {
+        padding-right: 0;
+    }
+
+    .info-banner-title {
+        font-size: 28px;
+    }
+
+    .info-banner-subtitle {
+        font-size: 22px;
+    }
+
+    .info-banner-paragraph {
+        font-size: 16px;
+    }
+
+    .info-banner-image {
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .info-banner-title {
+        font-size: 24px;
+    }
+
+    .info-banner-subtitle {
+        font-size: 20px;
+    }
+
+    .info-banner-paragraph {
+        font-size: 14px;
+    }
+
+    .info-banner-button {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+
+    .info-banner-image-principal {
+        max-width: 200px;
+    }
+}

@@ -1,0 +1,139 @@
+.banner {
+    padding: 40px;
+    margin: 15px 0;
+    position: relative;
+}
+
+.banner-main-title {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.banner-content {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.text-content {
+    flex: 2;
+    padding-right: 20px;
+}
+
+.banner-title {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.banner-subtitle {
+    font-size: 16px;
+    font-weight: 500;
+    margin-top: 0px;
+    margin-bottom: 20px;
+}
+
+.banner-content-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.banner-paragraph {
+    margin-bottom: 16px;
+    line-height: 1.6;
+    font-size: 16px;
+}
+
+.banner-image {
+    flex: 2;
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+}
+
+.image-principal {
+    max-width: 300px;
+    opacity: 1;
+}
+
+.image-secundaria {
+    position: absolute;
+    top: 40px;
+    right: 50px;
+    max-width: 300px;
+    opacity: 0.2;
+}
+
+@media (max-width: 768px) {
+    .banner-main-title {
+        align-items: center;
+        text-align: center;
+    }
+
+    .banner-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .text-content {
+        padding-right: 0;
+        margin-bottom: 20px;
+    }
+
+    .banner-title {
+        font-size: 24px;
+    }
+
+    .banner-subtitle {
+        font-size: 14px;
+    }
+
+    .banner-paragraph {
+        font-size: 14px;
+    }
+
+    .banner-image {
+        justify-content: center;
+    }
+
+    .image-principal, .image-secundaria {
+        max-width: 200px;
+    }
+
+    .image-secundaria {
+        position: static;
+        opacity: 0.2;
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .banner {
+        padding: 20px;
+    }
+
+    .banner-main-title {
+        font-size: 18px;
+    }
+
+    .banner-title {
+        font-size: 20px;
+    }
+
+    .banner-subtitle {
+        font-size: 12px;
+    }
+
+    .banner-paragraph {
+        font-size: 12px;
+    }
+
+    .image-principal, .image-secundaria {
+        max-width: 150px;
+    }
+}

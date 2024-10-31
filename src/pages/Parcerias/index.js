@@ -1,9 +1,7 @@
-import React from 'react';
-import NovaParceriaCard from 'components/NovaParceriaCard';
-import './Parcerias.css';
-import Title from 'components/Title';
 import NovaParceria from 'components/NovaParceria';
 import ParceriaAndamento from 'components/ParceriaAndamento';
+
+import './Parcerias.css';
 
 const Parcerias = () => {
   const parcerias = [
