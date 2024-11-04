@@ -26,13 +26,13 @@ export default function Menu() {
                 <div className={`menu-items-right ${menuOpen ? "menu-open" : ""}`}>
                     <ul className="menu-links">
                         <li><Link to="/parcerias">Parcerias</Link></li>
-                        <li><Link to="/como-funciona">Como Funciona</Link></li>
                         <li><Link to="/planos">Planos</Link></li>
+                        <li><Link to="/como-funciona">Como Funciona</Link></li>
                         <li><Link to="/quem-somos">Quem Somos</Link></li>
                         <li><Link to="/faq">FAQ</Link></li>
                     </ul>
                     <div className="menu-login">
-                        <Link to="/minha-conta">Minha Conta</Link>
+                        {/* <Link to="/minha-conta">Minha Conta</Link> */}
                         <Link to="/login">Entrar</Link>
                     </div>
                 </div>

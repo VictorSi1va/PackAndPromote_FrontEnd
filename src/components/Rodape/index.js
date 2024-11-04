@@ -9,24 +9,21 @@ export default function Rodape() {
                 <div className="footer-column">
                     <h4><Link to="/">Pack and Promote</Link></h4>
                     <ul>
-                        <li><Link to="/portal-parceiro">Portal do Parceiro</Link></li>
-                        <li><Link to="/blog-parceiros">Blog para Parceiros</Link></li>
-                        <li><Link to="/carreiras">Carreiras no Pack and Promote</Link></li>
+                        <li><Link to="/cadastro-loja">Cadastre sua loja</Link></li>
+                        <li><Link to="/planos">Planos</Link></li>
                     </ul>
                 </div>
                 <div className="footer-column">
                     <h4>Descubra</h4>
                     <ul>
-                        <li><Link to="/cadastro-loja">Cadastre sua loja</Link></li>
-                        <li><Link to="/cadastro-loja">Cadastre sua loja (delivery)</Link></li>
-                        <li><Link to="/cadastro-loja">Cadastre sua fábrica</Link></li>
+                        <li><Link to="/como-funciona">Como Funciona</Link></li>
+                        <li><Link to="/quem-somos">Quem Somos</Link></li>
                     </ul>
                 </div>
                 <div className="footer-column">
                     <h4>Saiba mais</h4>
                     <ul>
-                        <li><Link to="/privacidade">Privacidade</Link></li>
-                        <li><Link to="/codigo-conduta">Código de conduta</Link></li>
+                        <li><Link to="/faq">FAQ</Link></li>
                     </ul>
                 </div>
             </div>
