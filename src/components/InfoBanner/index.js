@@ -15,7 +15,7 @@ function InfoBanner({ titulo, subtitulo, conteudo, imagemUrl, corFundo, corTexto
                     </ul>
                     <Link to="/cadastro-loja">
                         <button className="info-banner-button">
-                            Saiba mais
+                            Cadastrar Loja
                         </button>
                     </Link>
                 </div>

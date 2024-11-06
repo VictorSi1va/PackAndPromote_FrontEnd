@@ -5,7 +5,8 @@ const Select = ({
     name,
     value,
     onChange,
-    options
+    options,
+    error
 }) => {
     return (
         <div className="select-group">
@@ -13,11 +14,12 @@ const Select = ({
             <select name={name} value={value} onChange={onChange}>
                 <option value="">Selecione uma das opções</option>
                 {options.map((option, index) => (
-                    <option key={index} value={option}>
-                        {option}
+                    <option key={index} value={option.value}>
+                        {option.label}
                     </option>
                 ))}
             </select>
+            {error && <span className="error-message">{error}</span>}
         </div>
     );
 };

@@ -6,10 +6,21 @@
 
 .title-group h1 {
     text-align: center;
-    color: #5393f7;    
+    color: #5393f7;
+    font-size: 2rem;
 }
 
 .title-group h2 {
     color: #5393f7;
     font-size: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    .title-group h1 {
+        font-size: 1.5rem;
+    }
+
+    .title-group h2 {
+        font-size: 1.2rem;
+    }
 }

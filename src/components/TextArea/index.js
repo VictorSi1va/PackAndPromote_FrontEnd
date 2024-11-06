@@ -1,11 +1,12 @@
 import './TextArea.css';
 
-const TextArea = ({ 
-    label, 
-    name, 
-    value, 
-    onChange, 
-    placeholder 
+const TextArea = ({
+    label,
+    name,
+    value,
+    onChange,
+    placeholder,
+    error
 }) => {
     return (
         <div className="textArea-group">
@@ -16,6 +17,7 @@ const TextArea = ({
                 onChange={onChange}
                 placeholder={placeholder}
             />
+            {error && <span className="error-message">{error}</span>}
         </div>
     );
 };

@@ -1,4 +1,6 @@
-import React from "react";
+import { Link } from "react-router-dom";
+import Button from "components/Button";
+
 import "./Planos.css";
 
 export default function Planos() {
@@ -52,6 +54,10 @@ export default function Planos() {
                     </div>
                 ))}
             </div>
+
+            <Link to="/cadastro-loja">
+                <Button label="Cadastrar Loja" />
+            </Link>
         </div>
     );
 }

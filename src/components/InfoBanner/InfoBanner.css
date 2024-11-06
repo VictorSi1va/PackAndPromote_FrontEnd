@@ -5,7 +5,8 @@
     align-items: center;
     justify-content: space-between;
     color: #FFFFFF;
-    flex-wrap: wrap; /* Para permitir que os elementos se reorganizem em telas menores */
+    flex-wrap: wrap;
+    /* Para permitir que os elementos se reorganizem em telas menores */
     gap: 20px;
 }
 
@@ -49,16 +50,35 @@
     padding: 10px 20px;
     font-size: 16px;
     font-weight: bold;
-    color: #FFFFFF;
-    background-color: #5393f7;
-    border: none;
-    border-radius: 4px;
+    color: #5393f7;
+    background-color: transparent;
+    border: 2px solid #5393f7;
+    border-radius: 20px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 5px;
     margin-top: 10px;
 }
 
 .info-banner-button:hover {
-    background-color: #4077c0;
+    background-color: #5393f7;
+    color: white;
+}
+
+.button-group .button {
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.button-group .button-primary {
+    background-color: transparent;
+    color: #5393f7;
+    border: 2px solid #5393f7;
 }
 
 .info-banner-image {

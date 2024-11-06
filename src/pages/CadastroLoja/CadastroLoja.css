@@ -3,3 +3,47 @@
     margin: 0 auto;
     padding: 30px;
 }
+
+@media (max-width: 768px) {
+    .cadastro-loja-container {
+        width: 90%;
+        padding: 20px;
+    }
+
+    .title-group h1 {
+        font-size: 1.8rem;
+    }
+    
+    .title-group h2 {
+        font-size: 1.4rem;
+    }
+}
+
+.input-group input,
+.textArea-group textarea,
+.select-group select {
+    padding: 10px;
+    font-size: 16px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+.error-message {
+    color: red;
+    font-size: 0.875rem;
+}
+
+@media (max-width: 768px) {
+    .input-group input,
+    .textArea-group textarea,
+    .select-group select {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .error-message {
+        font-size: 0.8rem;
+    }
+}
