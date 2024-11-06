@@ -6,6 +6,7 @@
     height: 100%;
     margin: 35px;
     font-family: Arial, sans-serif;
+    padding-bottom: 15px;
 }
 
 .login-logo-section {
@@ -114,12 +115,53 @@
     text-decoration: underline;
 }
 
+/* Responsivo para telas médias */
 @media (max-width: 768px) {
     .login-container {
         flex-direction: column;
+        margin: 20px;
     }
     .login-logo-section {
         margin-right: 0;
-        margin-bottom: 40px;
+        margin-bottom: 20px;
+    }
+    .login-box-section {
+        width: 100%;
+        padding: 20px;
+    }
+}
+
+/* Responsivo para telas pequenas */
+@media (max-width: 480px) {
+    .login-logo {
+        width: 120px;
+    }
+    .login-logo-text {
+        font-size: 20px;
+    }
+    .login-logo-section {
+        margin: 30px;
+    }
+    .login-box-section {
+        padding: 15px;
+        border-radius: 10px;
+    }
+    .login-box-section h2 {
+        font-size: 24px;
+    }
+    .login-input-group input {
+        font-size: 14px;
+        padding: 8px;
+    }
+    .login-forgot-password {
+        font-size: 14px;
+    }
+    .login-button {
+        font-size: 14px;
+        padding: 10px 0;
+    }
+    .login-create-account {
+        font-size: 14px;
+        padding-bottom: 10px;
     }
 }

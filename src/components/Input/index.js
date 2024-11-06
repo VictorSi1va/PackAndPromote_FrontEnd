@@ -6,7 +6,8 @@ const Input = ({
     value,
     onChange,
     placeholder,
-    type = "text"
+    type = "text",
+    error
 }) => {
     return (
         <div className="input-group">
@@ -18,6 +19,7 @@ const Input = ({
                 onChange={onChange}
                 placeholder={placeholder}
             />
+            {error && <span className="error-message">{error}</span>}
         </div>
     );
 };

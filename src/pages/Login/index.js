@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+
 import './Login.css';
 
 export default function Login() {
@@ -22,7 +23,7 @@ export default function Login() {
                     <Link to="/esqueci-senha" className="login-forgot-password">Esqueci minha senha</Link>
                     <button type="submit" className="login-button">Entrar</button>
                 </form>
-                <Link to="/criar-conta" className="login-create-account">Criar conta</Link>
+                <Link to="/cadastro-loja" className="login-create-account">Criar conta</Link>
             </div>
         </div>
     );

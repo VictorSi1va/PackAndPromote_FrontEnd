@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Input from 'components/Input';
 import Select from 'components/Select';
 import TextArea from 'components/TextArea';
 import Button from 'components/Button';
-import './MinhaConta.css';
 import Title from 'components/Title';
+import api from 'services/api'; // Instância do axios configurada
+
+import './MinhaConta.css';
 
 const MinhaConta = () => {
   const [userData, setUserData] = useState({
@@ -14,12 +16,18 @@ const MinhaConta = () => {
     telefone: '(11) 91234-5678',
     email: 'email@dominio.com',
     descricao: 'Pack and Promote Company',
-    categoria: 'Delivery',
-    publicoAlvo: 'Adultos',
-    idade: '26-35',
-    regiao: 'Sudeste',
-    preferenciaParceria: 'Promoções'
+    categoria: '1',
+    publicoAlvo: '1',
+    idade: '2',
+    regiao: '1',
+    preferenciaParceria: '1'
   });
+
+  const [categorias, setCategorias] = useState([]);
+  const [publicosAlvo, setPublicosAlvo] = useState([]);
+  const [idades, setIdades] = useState([]);
+  const [regioes, setRegioes] = useState([]);
+  const [preferenciasParcerias, setPreferenciasParcerias] = useState([]);
 
   const [planoData, setPlanoData] = useState({
     nomePlano: 'Gold',
@@ -29,11 +37,52 @@ const MinhaConta = () => {
     dataRenovacao: '05/12/2024'
   });
 
-  const categorias = ['Delivery', 'Embalagem', 'Loja'];
-  const publicosAlvo = ['Adultos', 'Adolescentes'];
-  const idades = ['18-25', '26-35', '36-45'];
-  const regioes = ['Norte', 'Nordeste', 'Sul', 'Sudeste', 'Centro-Oeste'];
-  const preferenciasParcerias = ['Promoções', 'Novidades'];
+  // Função para buscar os dados da API
+  const fetchData = async () => {
+    try {
+      // Requisição para listar categorias
+      const categoriasResponse = await api.get('Categoria/ListarCategorias');
+      setCategorias(categoriasResponse.data.map(categoria => ({
+        value: categoria.idCategoria,
+        label: categoria.nomeCategoria
+      })));
+
+      // Requisição para listar faixas etárias
+      const faixasEtariasResponse = await api.get('FaixaEtaria/ListarFaixasEtarias');
+      setIdades(faixasEtariasResponse.data.map(faixa => ({
+        value: faixa.idFaixaEtaria,
+        label: faixa.descricaoFaixaEtaria
+      })));
+
+      // Requisição para listar públicos alvo
+      const publicosAlvoResponse = await api.get('PublicoAlvo/ListarPublicosAlvo');
+      setPublicosAlvo(publicosAlvoResponse.data.map(publico => ({
+        value: publico.idPublicoAlvo,
+        label: publico.descricaoPublicoAlvo
+      })));
+
+      // Requisição para listar regiões alvo
+      const regioesAlvoResponse = await api.get('RegiaoAlvo/ListarRegioesAlvo');
+      setRegioes(regioesAlvoResponse.data.map(regiao => ({
+        value: regiao.idRegiaoAlvo,
+        label: regiao.nomeRegiaoAlvo
+      })));
+
+      // Requisição para listar preferências de parcerias
+      const preferenciasAlvoResponse = await api.get('PreferenciaAlvo/ListarPreferenciasAlvo');
+      setPreferenciasParcerias(preferenciasAlvoResponse.data.map(preferencia => ({
+        value: preferencia.idPreferenciaAlvo,
+        label: preferencia.descricaoPreferenciaAlvo
+      })));
+    } catch (error) {
+      console.error("Erro ao buscar dados da API:", error);
+    }
+  };
+
+  // Carregar os dados assim que o componente for montado
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -41,6 +90,11 @@ const MinhaConta = () => {
       ...userData,
       [name]: value
     });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert('Informações alteradas com sucesso!');
   };
 
   return (
@@ -136,13 +190,12 @@ const MinhaConta = () => {
         />
 
         <div className="button-wrapper">
-          <Button label="Alterar" onClick={() => alert('Informações alteradas com sucesso!')} />
+          <Button label="Alterar" onClick={handleSubmit} />
         </div>
       </div>
 
       <div className="plano-section">
         <Title titulo2="P l a n o" />
-
         <div className="plano-details">
           <h3 className="plano-name">Plano {planoData.nomePlano}</h3>
           <p>{planoData.quantidadeEmbalagensEntregues} embalagens entregues</p>
@@ -154,8 +207,8 @@ const MinhaConta = () => {
             <span>Renova em {planoData.dataRenovacao}</span>
           </div>
           <div className="plano-buttons">
-            <Button label="Trocar Plano" onClick={() => alert('Trocar Plano')} />
-            <Button label="Cancelar" onClick={() => alert('Cancelar Plano')} cancel />
+            <Button label="Trocar Plano" onClick={() => alert('Plano trocado com sucesso!')} />
+            <Button label="Cancelar" onClick={() => alert('Plano cancelado com sucesso!')} cancel />
           </div>
         </div>
       </div>

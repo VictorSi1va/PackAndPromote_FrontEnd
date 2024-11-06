@@ -68,6 +68,7 @@
     opacity: 0.2;
 }
 
+/* Responsivo para telas menores */
 @media (max-width: 768px) {
     .banner-main-title {
         align-items: center;
@@ -112,6 +113,7 @@
     }
 }
 
+/* Responsivo para telas muito pequenas */
 @media (max-width: 480px) {
     .banner {
         padding: 20px;
