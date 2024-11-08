@@ -48,7 +48,9 @@
     margin-right: 15px;
 }
 
-.menu-login a {
+.menu-login a,
+.menu-login button {
+    background-color: transparent;
     border: 2px solid white;
     padding: 5px 15px;
     border-radius: 20px;
@@ -57,7 +59,9 @@
     font-size: 16px;
 }
 
-.menu-login a:hover {
+.menu-login a:hover,
+.menu-login button:hover {
+    cursor: pointer;
     background-color: white;
     color: #5393f7;
 }
@@ -108,7 +112,8 @@
         padding-bottom: 15px;
     }
 
-    .menu-login a {
+    .menu-login a,
+    .menu-login button {
         font-size: 18px;
         padding: 10px 20px;
     }
@@ -119,7 +124,9 @@
         font-size: 20px;
     }
 
-    .menu-links a, .menu-login a {
+    .menu-links a,
+    .menu-login a,
+    .menu-login button {
         font-size: 16px;
     }
 }
