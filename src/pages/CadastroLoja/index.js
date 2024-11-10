@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import InputMask from 'react-input-mask';
 import Select from 'components/Select';
 import TextArea from 'components/TextArea';
 import Input from 'components/Input';
@@ -9,6 +11,8 @@ import api from 'services/api';
 import './CadastroLoja.css';
 
 const CadastroLoja = () => {
+    const navigate = useNavigate();
+
     const [formData, setFormData] = useState({
         usuario: '',
         senha: '',
@@ -100,6 +104,8 @@ const CadastroLoja = () => {
         const newErrors = {};
         let isValid = true;
 
+        const validateEmail = (email) => /\S+@\S+\.\S+/.test(email);
+
         // Verificando se os campos obrigatórios estão preenchidos
         if (!formData.usuario) {
             newErrors.usuario = 'Campo obrigatório';
@@ -133,6 +139,9 @@ const CadastroLoja = () => {
 
         if (!formData.email) {
             newErrors.email = 'Campo obrigatório';
+            isValid = false;
+        } else if (!validateEmail(formData.email)) {
+            newErrors.email = 'Email inválido';
             isValid = false;
         }
 
@@ -224,6 +233,8 @@ const CadastroLoja = () => {
                     preferenciaParcerias: '',
                     plano: ''
                 });
+
+                navigate('/login');
             }
         } catch (error) {
             console.error("Erro ao salvar o usuário:", error);
@@ -242,6 +253,7 @@ const CadastroLoja = () => {
                     value={formData.usuario}
                     onChange={handleChange}
                     placeholder="Digite o usuário"
+                    maxLength={100}
                     error={errors.usuario}
                 />
 
@@ -252,6 +264,7 @@ const CadastroLoja = () => {
                     onChange={handleChange}
                     placeholder="Digite a senha"
                     type="password"
+                    maxLength={100}
                     error={errors.senha}
                 />
 
@@ -261,17 +274,21 @@ const CadastroLoja = () => {
                     value={formData.nomeDaLoja}
                     onChange={handleChange}
                     placeholder="Digite o nome da loja"
+                    maxLength={100}
                     error={errors.nomeDaLoja}
                 />
 
-                <Input
-                    label="CNPJ"
-                    name="cnpj"
-                    value={formData.cnpj}
-                    onChange={handleChange}
-                    placeholder="Digite o CNPJ"
-                    error={errors.cnpj}
-                />
+                <div className="input-group">
+                    <label>CNPJ:</label>
+                    <InputMask
+                        mask="99.999.999/9999-99"
+                        name="cnpj"
+                        placeholder="Digite o CNPJ"
+                        value={formData.cnpj}
+                        onChange={handleChange}
+                    />
+                    {errors.cnpj && <span className="error-message">{errors.cnpj}</span>}
+                </div>
 
                 <Input
                     label="Endereço"
@@ -279,17 +296,21 @@ const CadastroLoja = () => {
                     value={formData.endereco}
                     onChange={handleChange}
                     placeholder="Digite o endereço"
+                    maxLength={255}
                     error={errors.endereco}
                 />
 
-                <Input
-                    label="Telefone"
-                    name="telefone"
-                    value={formData.telefone}
-                    onChange={handleChange}
-                    placeholder="Digite o telefone"
-                    error={errors.telefone}
-                />
+                <div className="input-group">
+                    <label>Telefone:</label>
+                    <InputMask
+                        mask="(99) 99999-9999"
+                        name="telefone"
+                        placeholder="Digite o telefone"
+                        value={formData.telefone}
+                        onChange={handleChange}
+                    />
+                    {errors.telefone && <span className="error-message">{errors.telefone}</span>}
+                </div>
 
                 <Input
                     label="E-mail"
@@ -297,6 +318,7 @@ const CadastroLoja = () => {
                     value={formData.email}
                     onChange={handleChange}
                     placeholder="Digite o e-mail"
+                    maxLength={100}
                     error={errors.email}
                 />
 
@@ -306,6 +328,7 @@ const CadastroLoja = () => {
                     value={formData.descricaoDaLoja}
                     onChange={handleChange}
                     placeholder="Digite uma breve descrição sobre a loja"
+                    maxLength={255}
                     error={errors.descricaoDaLoja}
                 />
 
@@ -363,7 +386,7 @@ const CadastroLoja = () => {
                     error={errors.preferenciaParcerias}
                 />
 
-                <Button label="Salvar" type="submit" />
+                <Button label="Cadastrar" type="submit" />
             </form>
         </div>
     );

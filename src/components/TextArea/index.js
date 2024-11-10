@@ -6,6 +6,7 @@ const TextArea = ({
     value,
     onChange,
     placeholder,
+    maxLength,
     error
 }) => {
     return (
@@ -16,6 +17,7 @@ const TextArea = ({
                 value={value}
                 onChange={onChange}
                 placeholder={placeholder}
+                maxLength={maxLength}
             />
             {error && <span className="error-message">{error}</span>}
         </div>
