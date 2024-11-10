@@ -4,7 +4,7 @@ import TextArea from 'components/TextArea';
 import Input from 'components/Input';
 import Button from 'components/Button';
 import Title from 'components/Title';
-import api from 'services/api'; // Instância do axios configurada
+import api from 'services/api';
 
 import './CadastroLoja.css';
 
@@ -33,6 +33,7 @@ const CadastroLoja = () => {
     const [idades, setIdades] = useState([]);
     const [regioes, setRegioes] = useState([]);
     const [preferenciasParcerias, setPreferenciasParcerias] = useState([]);
+    const [planos, setPlanos] = useState([]);
 
     // Função para buscar os dados da API
     const fetchData = async () => {
@@ -70,6 +71,13 @@ const CadastroLoja = () => {
             setPreferenciasParcerias(preferenciasAlvoResponse.data.map(preferencia => ({
                 value: preferencia.idPreferenciaAlvo,
                 label: preferencia.descricaoPreferenciaAlvo
+            })));
+
+            // Requisição para listar os planos
+            const planosResponse = await api.get('Plano/ListarPlanos');
+            setPlanos(planosResponse.data.map(plano => ({
+                value: plano.idPlano,
+                label: plano.nomePlano
             })));
         } catch (error) {
             console.error("Erro ao buscar dados da API:", error);
@@ -158,6 +166,11 @@ const CadastroLoja = () => {
             isValid = false;
         }
 
+        if (!formData.plano) {
+            newErrors.plano = 'Campo obrigatório';
+            isValid = false;
+        }
+
         setErrors(newErrors);
         return isValid;
     };
@@ -185,7 +198,8 @@ const CadastroLoja = () => {
             IdPublicoAlvo: formData.publicoAlvo,
             IdFaixaEtaria: formData.idade,
             IdRegiaoAlvo: formData.regiao,
-            IdPreferenciaAlvo: formData.preferenciaParcerias
+            IdPreferenciaAlvo: formData.preferenciaParcerias,
+            IdPlano: formData.plano
         };
 
         try {
@@ -207,7 +221,8 @@ const CadastroLoja = () => {
                     publicoAlvo: '',
                     idade: '',
                     regiao: '',
-                    preferenciaParcerias: ''
+                    preferenciaParcerias: '',
+                    plano: ''
                 });
             }
         } catch (error) {
@@ -301,6 +316,15 @@ const CadastroLoja = () => {
                     onChange={handleChange}
                     options={categorias}
                     error={errors.categoria}
+                />
+
+                <Select
+                    label="Plano"
+                    name="plano"
+                    value={formData.plano}
+                    onChange={handleChange}
+                    options={planos}
+                    error={errors.plano}
                 />
 
                 <Select
