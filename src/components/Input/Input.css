@@ -1,20 +1,22 @@
 .input-group {
-    display: flex;
-    flex-direction: column;
     margin-bottom: 20px;
 }
 
 .input-group input {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
+    margin-top: 10px;
+    margin-bottom: 5px;
     width: 100%;
-    margin-top: 5px;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    touch-action: none;
 }
 
 .input-group label {
-    font-size: 1rem;
+    font-size: 16px;
+    color: #333;
     margin-bottom: 5px;
 }
 

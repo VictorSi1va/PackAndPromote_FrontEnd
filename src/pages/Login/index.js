@@ -16,7 +16,7 @@ export default function Login() {
             event.preventDefault();
             try {
                 await signIn({ username: usuario, password: senha });
-                window.location.href = "/";
+                window.location.href = "/parcerias";
             } catch (error) {
                 alert("Login e/ou senha inválidos!");
             }
