@@ -1,0 +1,62 @@
+.checkbox-group {
+    margin-bottom: 16px;
+}
+
+.checkbox-group label {
+    font-size: 16px;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.checkbox-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.checkbox-option {
+    display: flex;
+    align-items: center;
+    background-color: #f9f9f9;
+    padding: 8px 12px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.checkbox-option.selected {
+    background-color: #e0f7fa;
+    border-color: #5393f7;
+}
+
+.checkbox-option:hover {
+    background-color: #e3f2fd;
+}
+
+.checkbox-option input[type="checkbox"] {
+    margin-right: 8px;
+    cursor: pointer;
+}
+
+.checkbox-option span {
+    font-weight: normal;
+    color: #555;
+}
+
+.error-message {
+    color: #f44336;
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+@media (max-width: 768px) {
+    .checkbox-group select {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .checkbox-group label {
+        font-size: 0.9rem;
+    }
+}
