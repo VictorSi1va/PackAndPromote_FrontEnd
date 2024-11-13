@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import InputMask from 'react-input-mask';
 import Select from 'components/Select';
+import CheckboxGroup from 'components/CheckboxGroup';
 import TextArea from 'components/TextArea';
 import Input from 'components/Input';
 import Button from 'components/Button';
@@ -23,15 +24,13 @@ const CadastroLoja = () => {
         email: '',
         descricaoDaLoja: '',
         categoria: '',
-        publicoAlvo: '',
-        idade: '',
-        regiao: '',
-        preferenciaParcerias: ''
+        publicoAlvo: [],
+        idade: [],
+        regiao: [],
+        preferenciaParcerias: []
     });
 
-    const [errors, setErrors] = useState({}); // Estado para armazenar erros de validação
-
-    // State para armazenar os dados de cada select
+    const [errors, setErrors] = useState({});
     const [categorias, setCategorias] = useState([]);
     const [publicosAlvo, setPublicosAlvo] = useState([]);
     const [idades, setIdades] = useState([]);
@@ -92,6 +91,11 @@ const CadastroLoja = () => {
     useEffect(() => {
         fetchData();
     }, []);
+
+    const handleCheckboxGroupChange = (name, selectedOptions) => {
+        setFormData({ ...formData, [name]: selectedOptions });
+        setErrors({ ...errors, [name]: '' });
+    };
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -203,12 +207,20 @@ const CadastroLoja = () => {
             EmailLoja: formData.email,
             DescricaoLoja: formData.descricaoDaLoja,
             CNPJLoja: formData.cnpj,
-            IdCategoria: formData.categoria,
-            IdPublicoAlvo: formData.publicoAlvo,
-            IdFaixaEtaria: formData.idade,
-            IdRegiaoAlvo: formData.regiao,
-            IdPreferenciaAlvo: formData.preferenciaParcerias,
-            IdPlano: formData.plano
+            IdCategoria: parseInt(formData.categoria, 10),
+            IdPlano: parseInt(formData.plano, 10),
+            PublicoAlvo: formData.publicoAlvo
+                .filter(op => op)
+                .map(op => parseInt(op, 10)),
+            FaixaEtaria: formData.idade
+                .filter(op => op)
+                .map(op => parseInt(op, 10)),
+            RegiaoAlvo: formData.regiao
+                .filter(op => op)
+                .map(op => parseInt(op, 10)),
+            PreferenciaAlvo: formData.preferenciaParcerias
+                .filter(op => op)
+                .map(op => parseInt(op, 10))
         };
 
         try {
@@ -227,10 +239,10 @@ const CadastroLoja = () => {
                     email: '',
                     descricaoDaLoja: '',
                     categoria: '',
-                    publicoAlvo: '',
-                    idade: '',
-                    regiao: '',
-                    preferenciaParcerias: '',
+                    publicoAlvo: [],
+                    idade: [],
+                    regiao: [],
+                    preferenciaParcerias: [],
                     plano: ''
                 });
 
@@ -350,39 +362,39 @@ const CadastroLoja = () => {
                     error={errors.plano}
                 />
 
-                <Select
+                <CheckboxGroup
                     label="Público-Alvo"
                     name="publicoAlvo"
-                    value={formData.publicoAlvo}
-                    onChange={handleChange}
                     options={publicosAlvo}
+                    selectedOptions={formData.publicoAlvo}
+                    onChange={handleCheckboxGroupChange}
                     error={errors.publicoAlvo}
                 />
 
-                <Select
+                <CheckboxGroup
                     label="Idade"
                     name="idade"
-                    value={formData.idade}
-                    onChange={handleChange}
                     options={idades}
+                    selectedOptions={formData.idade}
+                    onChange={handleCheckboxGroupChange}
                     error={errors.idade}
                 />
 
-                <Select
+                <CheckboxGroup
                     label="Região"
                     name="regiao"
-                    value={formData.regiao}
-                    onChange={handleChange}
                     options={regioes}
+                    selectedOptions={formData.regiao}
+                    onChange={handleCheckboxGroupChange}
                     error={errors.regiao}
                 />
 
-                <Select
+                <CheckboxGroup
                     label="Preferência de Parcerias"
                     name="preferenciaParcerias"
-                    value={formData.preferenciaParcerias}
-                    onChange={handleChange}
                     options={preferenciasParcerias}
+                    selectedOptions={formData.preferenciaParcerias}
+                    onChange={handleCheckboxGroupChange}
                     error={errors.preferenciaParcerias}
                 />
 
