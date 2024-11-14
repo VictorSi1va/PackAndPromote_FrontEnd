@@ -1,26 +1,36 @@
 import React, { useState, useEffect } from 'react';
+import CheckboxGroup from 'components/CheckboxGroup';
 import Input from 'components/Input';
 import Select from 'components/Select';
 import TextArea from 'components/TextArea';
 import Button from 'components/Button';
 import Title from 'components/Title';
-import api from 'services/api'; // Instância do axios configurada
+import api from 'services/api';
 
 import './MinhaConta.css';
 
 const MinhaConta = () => {
   const [userData, setUserData] = useState({
-    lojaNome: 'Pack and Promote',
-    cnpj: '20.031.219/0002-46',
-    endereco: 'Rua 7 de Setembro, SP, BR',
-    telefone: '(11) 91234-5678',
-    email: 'email@dominio.com',
-    descricao: 'Pack and Promote Company',
-    categoria: '1',
-    publicoAlvo: '1',
-    idade: '2',
-    regiao: '1',
-    preferenciaParceria: '1'
+    lojaNome: '',
+    cnpj: '',
+    endereco: '',
+    telefone: '',
+    email: '',
+    descricao: '',
+    categoria: '',
+    publicoAlvo: [],
+    idade: [],
+    regiao: [],
+    preferenciaParceria: [],
+    plano: ''
+  });
+
+  const [planoData, setPlanoData] = useState({
+    nomePlano: '',
+    tipoPlano: '',
+    quantidadeEmbalagensEntregues: '',
+    mediaEntregas: '',
+    dataRenovacao: ''
   });
 
   const [categorias, setCategorias] = useState([]);
@@ -28,18 +38,38 @@ const MinhaConta = () => {
   const [idades, setIdades] = useState([]);
   const [regioes, setRegioes] = useState([]);
   const [preferenciasParcerias, setPreferenciasParcerias] = useState([]);
-
-  const [planoData, setPlanoData] = useState({
-    nomePlano: 'Gold',
-    tipoPlano: 'mensal',
-    quantidadeEmbalagensEntregues: '10,500+',
-    mediaEntregas: '40',
-    dataRenovacao: '05/12/2024'
-  });
+  const [planos, setPlanos] = useState([]);
 
   // Função para buscar os dados da API
   const fetchData = async () => {
     try {
+      const userId = parseInt(localStorage.getItem("@IdUser_PackAndPromote"));
+      const response = await api.get(`/Login/PesquisarDadosMinhaConta/${userId}`);
+      const data = response.data;
+
+      setUserData({
+        lojaNome: data.nomeLoja,
+        cnpj: data.cnpjLoja,
+        endereco: data.enderecoLoja,
+        telefone: data.telefoneLoja,
+        email: data.emailLoja,
+        descricao: data.descricaoLoja,
+        categoria: data.idCategoria,
+        publicoAlvo: data.publicoAlvo,
+        idade: data.faixaEtaria,
+        regiao: data.regiaoAlvo,
+        preferenciaParceria: data.preferenciaAlvo,
+        plano: data.idPlano
+      });
+
+      setPlanoData({
+        nomePlano: data.nomePlano,
+        tipoPlano: data.periodoPlano,
+        quantidadeEmbalagensEntregues: data.mediaMensalEmbalagensEntreguesPlano,
+        mediaEntregas: data.mediaDiariaEmbalagensEntreguesPlano,
+        dataRenovacao: data.proximaRenovacaoPlano
+      });
+
       // Requisição para listar categorias
       const categoriasResponse = await api.get('Categoria/ListarCategorias');
       setCategorias(categoriasResponse.data.map(categoria => ({
@@ -74,6 +104,13 @@ const MinhaConta = () => {
         value: preferencia.idPreferenciaAlvo,
         label: preferencia.descricaoPreferenciaAlvo
       })));
+
+      // Requisição para listar os planos
+      const planosResponse = await api.get('Plano/ListarPlanos');
+      setPlanos(planosResponse.data.map(plano => ({
+        value: plano.idPlano,
+        label: plano.nomePlano
+      })));
     } catch (error) {
       console.error("Erro ao buscar dados da API:", error);
     }
@@ -83,6 +120,13 @@ const MinhaConta = () => {
   useEffect(() => {
     fetchData();
   }, []);
+
+  const handleCheckboxGroupChange = (name, selectedOptions) => {
+    setUserData(prevState => ({
+      ...prevState,
+      [name]: selectedOptions
+    }));
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -158,35 +202,43 @@ const MinhaConta = () => {
         />
 
         <Select
+          label="Plano"
+          name="plano"
+          value={userData.plano}
+          onChange={handleChange}
+          options={planos}
+        />
+
+        <CheckboxGroup
           label="Público-alvo"
           name="publicoAlvo"
-          value={userData.publicoAlvo}
-          onChange={handleChange}
           options={publicosAlvo}
+          selectedOptions={userData.publicoAlvo}
+          onChange={handleCheckboxGroupChange}
         />
 
-        <Select
+        <CheckboxGroup
           label="Idade"
           name="idade"
-          value={userData.idade}
-          onChange={handleChange}
           options={idades}
+          selectedOptions={userData.idade}
+          onChange={handleCheckboxGroupChange}
         />
 
-        <Select
+        <CheckboxGroup
           label="Região"
           name="regiao"
-          value={userData.regiao}
-          onChange={handleChange}
           options={regioes}
+          selectedOptions={userData.regiao}
+          onChange={handleCheckboxGroupChange}
         />
 
-        <Select
+        <CheckboxGroup
           label="Preferência de Parcerias"
           name="preferenciaParceria"
-          value={userData.preferenciaParceria}
-          onChange={handleChange}
           options={preferenciasParcerias}
+          selectedOptions={userData.preferenciaParceria}
+          onChange={handleCheckboxGroupChange}
         />
 
         <div className="button-wrapper">
@@ -197,10 +249,10 @@ const MinhaConta = () => {
       <div className="plano-section">
         <Title titulo2="P l a n o" />
         <div className="plano-details">
-          <h3 className="plano-name">Plano {planoData.nomePlano}</h3>
+          <h3 className="plano-name">{planoData.nomePlano}</h3>
           <p>{planoData.quantidadeEmbalagensEntregues} embalagens entregues</p>
           <p>Média de {planoData.mediaEntregas} entregas por dia</p>
-          <p>Plano mensal</p>
+          <p>Plano {planoData.tipoPlano}</p>
         </div>
         <div className="plano-footer">
           <div className="plano-renova">

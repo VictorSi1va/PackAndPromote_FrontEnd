@@ -10,20 +10,20 @@ const ParceriaAndamento = () => {
         logoSrc="images/lojas/mc-donalds.png"
         title="McDonald's"
         status="ATIVA"
-        totalEmbalagens="6969"
-        mediaEntregas="69"
+        totalEmbalagens="5687"
+        mediaEntregas="78"
         chartData="Bar Chart Data" 
-        percentage="69"
+        percentage="80"
       />
 
       <ParceriaAndamentoCard
         logoSrc="images/lojas/ze-delivery.png"
         title="Zé Delivery"
         status="EM PAUSA"
-        totalEmbalagens="6969"
-        mediaEntregas="69"
+        totalEmbalagens="4789"
+        mediaEntregas="67"
         chartData="Bar Chart Data"
-        percentage="69"
+        percentage="75"
       />
     </div>
   );

@@ -23,11 +23,12 @@ const signIn = useCallback(async ({ username, password }) => {
       Senha: password,
     });
     
-    const { token } = response.data;
+    const { token, idUser } = response.data;
 
     if (token) {
       setToken(token);
       localStorage.setItem("@AuthToken_PackAndPromote", token);
+      localStorage.setItem("@IdUser_PackAndPromote", idUser);
 
       api.defaults.headers.authorization = `Bearer ${token}`;
     } else {
@@ -45,6 +46,7 @@ const signIn = useCallback(async ({ username, password }) => {
   const signOut = useCallback(() => {
     setToken(null);
     localStorage.removeItem("@AuthToken_PackAndPromote");
+    localStorage.removeItem("@IdUser_PackAndPromote");
     delete api.defaults.headers.authorization;
   }, []);
 

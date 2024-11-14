@@ -184,6 +184,26 @@ const CadastroLoja = () => {
             isValid = false;
         }
 
+        if (formData.publicoAlvo.length === 0) {
+            newErrors.publicoAlvo = 'Selecione pelo menos uma opção';
+            isValid = false;
+        }
+    
+        if (formData.idade.length === 0) {
+            newErrors.idade = 'Selecione pelo menos uma opção';
+            isValid = false;
+        }
+    
+        if (formData.regiao.length === 0) {
+            newErrors.regiao = 'Selecione pelo menos uma opção';
+            isValid = false;
+        }
+    
+        if (formData.preferenciaParcerias.length === 0) {
+            newErrors.preferenciaParcerias = 'Selecione pelo menos uma opção';
+            isValid = false;
+        }
+    
         setErrors(newErrors);
         return isValid;
     };
@@ -291,7 +311,7 @@ const CadastroLoja = () => {
                 />
 
                 <div className="input-group">
-                    <label>CNPJ:</label>
+                    <label>CNPJ</label>
                     <InputMask
                         mask="99.999.999/9999-99"
                         name="cnpj"
@@ -313,7 +333,7 @@ const CadastroLoja = () => {
                 />
 
                 <div className="input-group">
-                    <label>Telefone:</label>
+                    <label>Telefone</label>
                     <InputMask
                         mask="(99) 99999-9999"
                         name="telefone"

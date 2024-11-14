@@ -24,11 +24,11 @@
     }
 
     .error-message {
-        font-size: 0.8rem;
+        font-size: 1.2rem;
     }
 }
 
 .error-message {
     color: red;
-    font-size: 0.875rem;
+    font-size: 1.2rem;
 }

@@ -6,10 +6,11 @@
     border-radius: 8px;
     text-align: left;
     padding-bottom: 50px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .quem-somos-title {
-    font-size: 32px;
+    font-size: 2rem;
     color: #5393f7;
     font-weight: bold;
     text-align: center;
@@ -21,14 +22,14 @@
 }
 
 .quem-somos-subtitle {
-    font-size: 24px;
+    font-size: 1.5rem;
     color: #5393f7;
     margin-top: 20px;
     font-weight: bold;
 }
 
 .quem-somos-text {
-    font-size: 16px;
+    font-size: 1.2rem;
     line-height: 1.6;
     color: #666;
     margin-bottom: 15px;
@@ -38,6 +39,54 @@
     list-style-type: disc;
     padding-left: 20px;
     color: #666;
-    font-size: 16px;
+    font-size: 1.2rem;
     margin-top: 10px;
+}
+
+/* Responsividade para tablets */
+@media (max-width: 768px) {
+    .quem-somos-page {
+        padding: 15px;
+    }
+
+    .quem-somos-title {
+        font-size: 1.8rem;
+    }
+
+    .quem-somos-subtitle {
+        font-size: 1.3rem;
+    }
+
+    .quem-somos-text {
+        font-size: 1.2rem;
+    }
+
+    .quem-somos-values {
+        font-size: 1.2rem;
+    }
+}
+
+/* Responsividade para dispositivos móveis */
+@media (max-width: 480px) {
+    .quem-somos-page {
+        padding: 10px;
+    }
+
+    .quem-somos-title {
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+    }
+
+    .quem-somos-subtitle {
+        font-size: 1.2rem;
+    }
+
+    .quem-somos-text {
+        font-size: 1.2rem;
+    }
+
+    .quem-somos-values {
+        font-size: 1.2rem;
+        padding-left: 15px;
+    }
 }
