@@ -19,7 +19,7 @@
 
 .footer-column h4,
 .footer-column h4 a {
-    font-size: 16px;
+    font-size: 1.2rem;
     font-weight: bold;
     color: #5393f7;
     margin-bottom: 15px;
@@ -48,7 +48,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 12px;
+    font-size: 1.2rem;
     border-top: 1px solid #ddd;
     padding-top: 20px;
     flex-wrap: wrap;
@@ -68,7 +68,7 @@
 }
 
 .footer-social svg {
-    font-size: 18px;
+    font-size: 1.2rem;
     color: #777;
     cursor: pointer;
 }

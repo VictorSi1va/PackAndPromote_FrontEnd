@@ -49,7 +49,7 @@
 @media (max-width: 990px) {
     .minha-conta-container .conta-section, 
     .minha-conta-container .plano-section {
-        width: 90%;
+        width: 50%;
     }
 }
 
@@ -58,12 +58,12 @@
     .minha-conta-container {
         flex-direction: column;
         align-items: center;
-        padding: 10px;
+        padding: 20px;
     }
 
     .minha-conta-container .conta-section, 
     .minha-conta-container .plano-section {
-        width: 100%;
+        width: 90%;
         padding: 20px;
     }
 

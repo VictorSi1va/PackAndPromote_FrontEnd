@@ -111,15 +111,15 @@
     }
 
     .info-banner-title {
-        font-size: 28px;
+        font-size: 1.8rem;
     }
 
     .info-banner-subtitle {
-        font-size: 22px;
+        font-size: 1.2rem;
     }
 
     .info-banner-paragraph {
-        font-size: 16px;
+        font-size: 1.2rem;
     }
 
     .info-banner-image {
@@ -129,19 +129,19 @@
 
 @media (max-width: 480px) {
     .info-banner-title {
-        font-size: 24px;
+        font-size: 1.8rem;
     }
 
     .info-banner-subtitle {
-        font-size: 20px;
+        font-size: 1.2rem;
     }
 
     .info-banner-paragraph {
-        font-size: 14px;
+        font-size: 1.2rem;
     }
 
     .info-banner-button {
-        font-size: 14px;
+        font-size: 1.2rem;
         padding: 8px 16px;
     }
 

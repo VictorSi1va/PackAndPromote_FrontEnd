@@ -45,7 +45,7 @@
 .banner-paragraph {
     margin-bottom: 16px;
     line-height: 1.6;
-    font-size: 16px;
+    font-size: 1.2rem;
 }
 
 .banner-image {
@@ -95,7 +95,7 @@
     }
 
     .banner-paragraph {
-        font-size: 14px;
+        font-size: 1.2rem;
     }
 
     .banner-image {
@@ -120,19 +120,19 @@
     }
 
     .banner-main-title {
-        font-size: 18px;
+        font-size: 1.8rem;
     }
 
     .banner-title {
-        font-size: 20px;
+        font-size: 1.8rem;
     }
 
     .banner-subtitle {
-        font-size: 12px;
+        font-size: 1.2rem;
     }
 
     .banner-paragraph {
-        font-size: 12px;
+        font-size: 1.2rem;
     }
 
     .image-principal, .image-secundaria {
