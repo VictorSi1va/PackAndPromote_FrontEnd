@@ -19,8 +19,50 @@
     font-size: 18px;
     color: #666;
     margin-bottom: 30px;
+    line-height: 1.6;
 }
 
 .faq-content {
     text-align: left;
+    margin-top: 20px;
+}
+
+/* Responsividade para tablets */
+@media (max-width: 768px) {
+    .faq-page {
+        padding: 15px;
+        max-width: 90%;
+        padding-bottom: 30px;
+    }
+
+    .faq-title {
+        font-size: 24px;
+    }
+
+    .faq-subtitle {
+        font-size: 16px;
+        margin-bottom: 0px;
+    }
+}
+
+/* Responsividade para celulares */
+@media (max-width: 480px) {
+    .faq-page {
+        padding: 15px;
+        max-width: 95%;
+        padding-bottom: 30px;
+    }
+
+    .faq-title {
+        font-size: 24px;
+    }
+
+    .faq-item {
+        padding: 15px;
+    }
+
+    .faq-subtitle {
+        font-size: 16px;
+        margin-bottom: 0px;
+    }
 }

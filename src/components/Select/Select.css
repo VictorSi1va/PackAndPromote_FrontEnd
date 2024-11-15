@@ -1,32 +1,20 @@
 .select-group {
-    display: flex;
-    flex-direction: column;
     margin-bottom: 20px;
 }
 
 .select-group select {
+    width: 100%;
     padding: 10px;
     color: #333;
+    font-size: 16px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    font-size: 1.5rem;
-    width: 100%;
     margin-top: 5px;
-}
-
-.select-group label {
-    font-size: 1.5rem;
-    color: #333;
-    margin-bottom: 5px;
 }
 
 @media (max-width: 768px) {
     .select-group select {
         font-size: 14px;
-        padding: 8px;
-    }
-
-    .select-group label {
-        font-size: 1.2rem;
+        padding: 12px;
     }
 }

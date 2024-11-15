@@ -2,31 +2,28 @@
     margin-bottom: 20px;
 }
 
-.input-group input {
-    margin-top: 10px;
-    margin-bottom: 5px;
-    width: 100%;
-    padding: 10px;
-    font-size: 1.5rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
-    touch-action: none;
-}
-
 .input-group label {
-    font-size: 1.5rem;
+    /* font-size: 1.5rem; */
     color: #333;
     margin-bottom: 5px;
 }
 
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+
+    margin-top: 10px;
+    margin-bottom: 5px;
+    box-sizing: border-box;
+    touch-action: none;
+}
+
 @media (max-width: 768px) {
     .input-group input {
-        font-size: 1.2rem;
-        padding: 8px;
-    }
-
-    .input-group label {
-        font-size: 1.2rem;
+        font-size: 14px;
+        padding: 12px;
     }
 }

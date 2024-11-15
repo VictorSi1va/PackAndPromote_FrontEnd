@@ -22,13 +22,8 @@
         font-size: 14px;
         padding: 8px;
     }
-
-    .error-message {
-        font-size: 1.2rem;
-    }
 }
 
 .error-message {
     color: red;
-    font-size: 1.2rem;
 }

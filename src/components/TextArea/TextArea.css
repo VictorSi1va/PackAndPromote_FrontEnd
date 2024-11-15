@@ -2,33 +2,30 @@
     margin-bottom: 20px;
 }
 
-.textArea-group textarea {    
-    margin-top: 10px;
+.textArea-group label {
+    /* font-size: 1.5rem; */
+    color: #333;
     margin-bottom: 5px;
+}
+
+.textArea-group textarea {
     width: 100%;
+    height: 100px;
     padding: 10px;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 1.5rem;
+    font-size: 16px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 4px;
+    margin-top: 10px;
+    margin-bottom: 5px;
     box-sizing: border-box;
     touch-action: none;
     resize: vertical;
 }
 
-.textArea-group label {
-    font-size: 1.5rem;
-    color: #333;
-    margin-bottom: 5px;
-}
-
 @media (max-width: 768px) {
     .textArea-group textarea {
-        font-size: 1.2rem;
-        padding: 8px;
-    }
-
-    .textArea-group label {
-        font-size: 1.2rem;
+        font-size: 14px;
+        padding: 12px;
     }
 }
