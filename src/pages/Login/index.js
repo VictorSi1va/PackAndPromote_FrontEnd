@@ -57,7 +57,7 @@ export default function Login() {
                             required
                         />
                     </div>
-                    <Link to="/esqueci-senha" className="login-forgot-password">Esqueci minha senha</Link>
+                    {/* <Link to="/esqueci-senha" className="login-forgot-password">Esqueci minha senha</Link> */}
                     <button type="submit" className="login-button">Entrar</button>
                 </form>
                 <Link to="/cadastro-loja" className="login-create-account">Criar conta</Link>

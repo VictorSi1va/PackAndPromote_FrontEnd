@@ -119,11 +119,10 @@
 @media (max-width: 768px) {
     .login-container {
         flex-direction: column;
-        margin: 20px;
+        padding: 20px;
     }
     .login-logo-section {
-        margin-right: 0;
-        margin-bottom: 20px;
+        margin: 20px;
     }
     .login-box-section {
         width: 100%;
@@ -140,7 +139,7 @@
         font-size: 20px;
     }
     .login-logo-section {
-        margin: 30px;
+        margin: 20px;
     }
     .login-box-section {
         padding: 15px;

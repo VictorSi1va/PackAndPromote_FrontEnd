@@ -2,6 +2,11 @@
     margin-bottom: 20px;
 }
 
+.select-group label {
+    color: #333;
+    margin-bottom: 5px;
+}
+
 .select-group select {
     width: 100%;
     padding: 10px;

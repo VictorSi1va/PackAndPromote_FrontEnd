@@ -258,10 +258,10 @@ const MinhaConta = () => {
           <div className="plano-renova">
             <span>Renova em {planoData.dataRenovacao}</span>
           </div>
-          <div className="plano-buttons">
+          {/* <div className="plano-buttons">
             <Button label="Trocar Plano" onClick={() => alert('Plano trocado com sucesso!')} />
             <Button label="Cancelar" onClick={() => alert('Plano cancelado com sucesso!')} cancel />
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

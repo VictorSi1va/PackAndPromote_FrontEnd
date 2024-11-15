@@ -4,6 +4,7 @@
     padding: 10px;
     border-radius: 20px;
     background-color: transparent;
+    cursor: pointer;
     box-shadow: none;
     transition: transform 0.3s ease;
 }
