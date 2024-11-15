@@ -1,15 +1,15 @@
 .button-group {
     display: flex;
     flex-direction: column;
+    justify-content: center;
 }
 
 .button-group .button {
     padding: 10px 20px;
-    border-radius: 20px;
-    font-weight: bold;
     font-size: 16px;
+    border: none;
+    border-radius: 20px;
     cursor: pointer;
-    margin: 5px;
     transition: background-color 0.3s ease;
 }
 
@@ -33,4 +33,12 @@
 .button-group .button-cancel:hover {
     background-color: #ff4d4d;
     color: white;
+}
+
+@media (max-width: 768px) {
+    .button {
+        width: 100%;
+        padding: 12px;
+        font-size: 14px;
+    }
 }

@@ -1,9 +1,9 @@
 .checkbox-group {
-    margin-bottom: 16px;
+    margin-bottom: 20px;
 }
 
 .checkbox-group label {
-    font-size: 1.5rem;
+    /* font-size: 1.5rem; */
     color: #333;
     margin-bottom: 8px;
     display: block;
@@ -12,17 +12,18 @@
 .checkbox-options {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 10px;
 }
 
 .checkbox-option {
     display: flex;
     align-items: center;
+    gap: 5px;
+    cursor: pointer;
     background-color: #f9f9f9;
     padding: 8px 12px;
-    border-radius: 4px;
+    border-radius: 20px;
     border: 1px solid #ddd;
-    cursor: pointer;
     transition: background-color 0.3s, border-color 0.3s;
 }
 
@@ -45,20 +46,12 @@
     color: #333;
 }
 
-.error-message {
-    color: #f44336;
-    font-size: 1.2rem;
-    margin-top: 4px;
+.checkbox-option input {
+    margin-right: 5px;
 }
 
 @media (max-width: 768px) {
-    .checkbox-group select {
-        font-size: 1.2rem;
-        padding: 8px;
-    }
-
-    .checkbox-group label {
-        font-size: 1.2rem;
-        color: #333;
+    .checkbox-options {
+        flex-direction: column;
     }
 }

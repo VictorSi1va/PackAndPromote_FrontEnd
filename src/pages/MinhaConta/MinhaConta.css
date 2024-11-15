@@ -1,35 +1,29 @@
 .minha-conta-container {
     display: flex;
     justify-content: space-between;
-    padding: 20px;
+    align-items: flex-start;
     font-family: Arial, sans-serif;
-    flex-wrap: wrap;
     gap: 20px;
+    padding: 20px;
 }
 
-.minha-conta-container .conta-section, 
-.minha-conta-container .plano-section {
-    width: 43%;
-    padding: 30px;
-    margin-bottom: 10px;
+.conta-section,
+.plano-section {
+    flex: 1;
+    padding: 20px;
     color: #787878;
-    border-radius: 8px;
-}
-
-.plano-name {
-    font-weight: bold;
-}
-
-.button-wrapper {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 15px;
+    background-color: #fff;
 }
 
 .plano-footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.plano-buttons {
+    display: flex;
+    gap: 5px;
 }
 
 .plano-renova {
@@ -40,41 +34,30 @@
     border-radius: 20px;
 }
 
-.plano-buttons {
-    display: flex;
-    gap: 5px;
+/* Para manter os elementos em colunas no desktop */
+.conta-section {
+    order: 1;
 }
 
-/* Responsividade para tablets */
-@media (max-width: 990px) {
-    .minha-conta-container .conta-section, 
-    .minha-conta-container .plano-section {
-        width: 50%;
-    }
+.plano-section {
+    order: 2;
 }
 
-/* Responsividade para dispositivos móveis */
-@media (max-width: 600px) {
+/* Estilos responsivos para telas menores */
+@media (max-width: 768px) {
     .minha-conta-container {
         flex-direction: column;
         align-items: center;
-        padding: 20px;
     }
 
-    .minha-conta-container .conta-section, 
-    .minha-conta-container .plano-section {
-        width: 90%;
-        padding: 20px;
-    }
-
-    .plano-footer {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .button-wrapper {
-        justify-content: center;
+    .conta-section,
+    .plano-section {
         width: 100%;
-        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+
+    .plano-section {
+        margin-bottom: 0;
+        /* Último item sem margem inferior */
     }
 }
