@@ -1,14 +1,15 @@
 .banner {
     padding: 40px;
-    margin: 15px 0;
+    margin: 20px 0;
     position: relative;
 }
 
 .banner-main-title {
-    font-size: 28px;
+    font-size: 32px;
     font-weight: bold;
     text-align: left;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+    color: inherit;
 }
 
 .banner-content {
@@ -25,16 +26,18 @@
 }
 
 .banner-title {
-    font-size: 28px;
+    font-size: 32px;
     font-weight: bold;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
+    color: inherit;
 }
 
 .banner-subtitle {
-    font-size: 1.2rem;
+    font-size: 24px;
     font-weight: 500;
     margin-top: 0px;
     margin-bottom: 20px;
+    color: inherit;
 }
 
 .banner-content-list {
@@ -45,33 +48,48 @@
 .banner-paragraph {
     margin-bottom: 16px;
     line-height: 1.6;
-    font-size: 1.2rem;
+    font-size: 18px;
+    color: inherit;
 }
 
 .banner-image {
     flex: 2;
     display: flex;
     justify-content: flex-end;
+    align-items: flex-start;
     position: relative;
 }
 
 .image-principal {
-    max-width: 300px;
-    opacity: 1;
+    max-width: 280px;
+    transition: transform 0.3s ease;
+}
+
+.image-principal:hover {
+    transform: scale(1.05);
 }
 
 .image-secundaria {
     position: absolute;
     top: 40px;
     right: 50px;
-    max-width: 300px;
-    opacity: 0.2;
+    max-width: 200px;
+    opacity: 0.15;
+    transition: opacity 0.3s ease;
 }
 
-/* Responsivo para telas menores */
+.image-secundaria:hover {
+    opacity: 0.3;
+}
+
+/* Responsividade para tablets */
 @media (max-width: 768px) {
+    .banner {
+        padding: 30px;
+    }
+
     .banner-main-title {
-        align-items: center;
+        font-size: 28px;
         text-align: center;
     }
 
@@ -83,59 +101,79 @@
 
     .text-content {
         padding-right: 0;
-        margin-bottom: 20px;
+        margin-bottom: 10px;
     }
 
     .banner-title {
-        font-size: 24px;
+        font-size: 28px;
     }
 
     .banner-subtitle {
-        font-size: 14px;
+        font-size: 18px;
     }
 
     .banner-paragraph {
-        font-size: 1.2rem;
+        font-size: 16px;
     }
 
     .banner-image {
         justify-content: center;
     }
 
-    .image-principal, .image-secundaria {
-        max-width: 200px;
+    .image-principal,
+    .image-secundaria {
+        max-width: 220px;
     }
 
     .image-secundaria {
         position: static;
+        margin-top: 15px;
         opacity: 0.2;
+    }
+
+    .info-banner-button {
         margin-top: 10px;
     }
 }
 
-/* Responsivo para telas muito pequenas */
+/* Responsividade para dispositivos móveis */
 @media (max-width: 480px) {
     .banner {
         padding: 20px;
     }
 
     .banner-main-title {
-        font-size: 1.8rem;
+        font-size: 28px;
     }
 
     .banner-title {
-        font-size: 1.8rem;
+        font-size: 28px;
     }
 
     .banner-subtitle {
-        font-size: 1.2rem;
+        font-size: 18px;
     }
 
     .banner-paragraph {
-        font-size: 1.2rem;
+        font-size: 16px;
     }
 
-    .image-principal, .image-secundaria {
+    .text-content {
+        padding-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .image-principal,
+    .image-secundaria {
         max-width: 150px;
+    }
+
+    .image-secundaria {
+        margin-top: 10px;
+        opacity: 0.2;
+    }
+
+    .info-banner-button {
+        margin-top: 10px;
     }
 }

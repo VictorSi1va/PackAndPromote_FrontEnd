@@ -18,7 +18,7 @@ const Parcerias = () => {
     <div>
       <NovaParceria />
 
-      <ParceriaAndamento />
+      {/* <ParceriaAndamento /> */}
     </div>
   );
 };
