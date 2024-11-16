@@ -1,11 +1,16 @@
+.parcerias-geral-container {
+    padding-bottom: 50px;
+}
+
 .parcerias-container {
     padding: 20px;
     text-align: center;
     background-color: white;
+    padding-bottom: 0px;
 }
 
 .parcerias-title {
-    font-size: 1.8rem;
+    font-size: 32px;
     color: #5393f7;
     margin-bottom: 30px;
 }
@@ -15,4 +20,10 @@
     justify-content: center;
     gap: 20px;
     flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+    .parcerias-geral-container {
+        padding-bottom: 20px;
+    }
 }

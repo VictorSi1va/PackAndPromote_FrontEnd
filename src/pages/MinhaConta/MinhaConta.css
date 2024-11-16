@@ -53,11 +53,12 @@
     .conta-section,
     .plano-section {
         width: 100%;
-        margin-bottom: 20px;
+        padding-top: 0px;
+        margin-bottom: 0;
     }
 
-    .plano-section {
-        margin-bottom: 0;
-        /* Último item sem margem inferior */
+    .conta-section h2,
+    .plano-section h2 {
+        font-size: 28px;
     }
 }

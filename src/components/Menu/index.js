@@ -26,10 +26,21 @@ export default function Menu() {
         <header className="menu-header">
             <nav className="menu-nav">
                 <div className="menu-logo">
-                    <Link to="/">
-                        <img src="/logo-fundo-branco.png" alt="Logo" className="logo-img" />
-                    </Link>
-                    <Link to="/">pack and promote</Link>
+                    {userLogged() ? (
+                        <>
+                            <Link to="/parcerias">
+                                <img src="/logo-fundo-branco.png" alt="Logo" className="logo-img" />
+                            </Link>
+                            <Link to="/parcerias">pack and promote</Link>
+                        </>
+                    ) : (
+                        <>
+                            <Link to="/">
+                                <img src="/logo-fundo-branco.png" alt="Logo" className="logo-img" />
+                            </Link>
+                            <Link to="/">pack and promote</Link>
+                        </>
+                    )}
                 </div>
 
                 <button className="menu-toggle" onClick={toggleMenu}>

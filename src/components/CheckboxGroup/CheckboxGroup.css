@@ -3,6 +3,7 @@
 }
 
 .checkbox-group label {
+    font-size: 18px;
     color: #333;
     margin-bottom: 8px;
     display: block;
@@ -41,6 +42,7 @@
 }
 
 .checkbox-option span {
+    font-size: 18px;
     font-weight: normal;
     color: #333;
 }

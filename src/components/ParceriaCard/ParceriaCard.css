@@ -1,4 +1,4 @@
-.nova-parceria-card {
+.parceria-card {
     width: 120px;
     text-align: center;
     padding: 10px;
@@ -9,7 +9,7 @@
     transition: transform 0.3s ease;
 }
 
-.nova-parceria-card:hover {
+.parceria-card:hover {
     transform: translateY(-5px);
 }
 
@@ -24,14 +24,14 @@
     align-items: center;
 }
 
-.nova-parceria-logo {
+.parceria-logo {
     width: 80%;
     height: 80%;
     object-fit: contain;
     border-radius: 12px;
 }
 
-.nova-parceria-title {
+.parceria-title {
     font-size: 1.2rem;
     color: #666;
     margin-top: 10px;
