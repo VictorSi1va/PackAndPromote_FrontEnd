@@ -3,6 +3,7 @@
 }
 
 .input-group label {
+    font-size: 18px;
     color: #333;
     margin-bottom: 5px;
 }
@@ -10,7 +11,7 @@
 .input-group input {
     width: 100%;
     padding: 10px;
-    font-size: 16px;
+    font-size: 18px;
     border: 1px solid #ccc;
     border-radius: 8px;
 
@@ -22,7 +23,7 @@
 
 @media (max-width: 768px) {
     .input-group input {
-        font-size: 14px;
+        font-size: 16px;
         padding: 12px;
     }
 }
