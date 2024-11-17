@@ -17,6 +17,7 @@ import Rodape from "components/Rodape";
 import PrivateRoute from "utils/PrivateRoute";
 import NotFound from "pages/NotFound";
 import SolicitarParceria from "pages/SolicitarParceria";
+import DetalhesParceria from "pages/DetalhesParceria";
 
 function App() {
   return (
@@ -37,7 +38,8 @@ function App() {
 
           <Route element={<PrivateRoute role="ADMINISTRADOR,CLIENTE" />}>
             <Route path="parcerias" element={<Parcerias />} />
-            <Route path="solicitar-parceria/:idLoja" element={<SolicitarParceria />} />
+            <Route path="solicitar-parceria/:id" element={<SolicitarParceria />} />
+            <Route path="detalhes-parceria/:id" element={<DetalhesParceria />} />
             <Route path="minha-conta" element={<MinhaConta />} />
             <Route path="logout" element={<Login />} />
           </Route>

@@ -1,18 +1,18 @@
 import { useState, useEffect } from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom'; // Importa useNavigate
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import Title from 'components/Title';
 import Button from 'components/Button';
 import api from 'services/api';
 
-import './SolicitarParceria.css';
+import './DetalhesParceria.css';
 
-const SolicitarParceria = () => {
+const DetalhesParceria = () => {
     const { id } = useParams(); // Captura o ID da loja da URL
     const navigate = useNavigate(); // Hook para redirecionamento
     const [loja, setLoja] = useState(null); // Estado para armazenar os dados da loja
     const [loading, setLoading] = useState(true); // Indica se os dados estão carregando
     const [error, setError] = useState(null); // Estado para erros
-    const idLojaLogada = parseInt(localStorage.getItem("@IdUser_PackAndPromote"));
+    const idLojaLogada = parseInt(localStorage.getItem("@IdUser_PackAndPromote")); // ID da loja logada
 
     useEffect(() => {
         const fetchLoja = async () => {
@@ -29,17 +29,20 @@ const SolicitarParceria = () => {
         fetchLoja();
     }, [id]);
 
-    const handleSolicitarParceria = async () => {
+    const handleCancelarParceria = async () => {
         try {
-            const parceriaSolicitacaoDto = {
-                IdLojaPromoter: parseInt(id) // ID da loja da URL
+            const parceriaCancelamentoDto = {
+                IdLojaPromoter: parseInt(id), // ID da loja da URL
             };
 
-            const response = await api.post(`/Vendas/SolicitarParceria/${idLojaLogada}`, parceriaSolicitacaoDto);
+            const response = await api.delete(`/Vendas/CancelarParceria/${idLojaLogada}`, {
+                data: parceriaCancelamentoDto,
+            });
+
             alert(response.data); // Mensagem de sucesso da API
-            navigate('/parcerias'); // Redireciona para a página de Parcerias
+            navigate('/parcerias'); // Redireciona para a página /parcerias
         } catch (err) {
-            const errorMsg = err.response?.data?.message || 'Erro ao solicitar parceria.';
+            const errorMsg = err.response?.data?.message || 'Erro ao cancelar parceria.';
             alert(errorMsg);
         }
     };
@@ -53,8 +56,8 @@ const SolicitarParceria = () => {
     }
 
     return (
-        <div className="solicitar-parceria-container">
-            <Title titulo="Solicitar Parceria" />
+        <div className="detalhes-parceria-container">
+            <Title titulo="Informações da Parceria" />
 
             <div className="loja-detalhes">
                 <img
@@ -74,8 +77,9 @@ const SolicitarParceria = () => {
             </div>
 
             <Button
-                label="Solicitar Parceria"
-                onClick={handleSolicitarParceria}
+                label="Cancelar Parceria"
+                onClick={handleCancelarParceria}
+                cancel={true}
             />
 
             <Link to="/parcerias">
@@ -85,4 +89,4 @@ const SolicitarParceria = () => {
     );
 };
 
-export default SolicitarParceria;
+export default DetalhesParceria;
