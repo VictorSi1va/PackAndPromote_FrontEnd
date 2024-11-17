@@ -1,0 +1,83 @@
+.detalhes-parceria-container {
+    margin: 0 auto;
+    padding: 20px;
+    padding-bottom: 50px;
+    max-width: 800px;
+    text-align: center;
+}
+
+.loja-detalhes {
+    text-align: center;
+    padding: 20px;
+}
+
+.loja-detalhes h2 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #5393f7;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.loja-detalhes p {
+    font-size: 18px;
+    color: #333;
+    margin: 8px 0;
+    line-height: 1.6;
+}
+
+.loja-detalhes strong {
+    color: #5393f7;
+}
+
+.loja-imagem {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease;
+}
+
+.loja-imagem:hover {
+    transform: scale(1.05);
+}
+
+/* Estilo para o botão de voltar */
+.btn-voltar {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 18px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    background-color: transparent;
+    color: #5393f7;
+    border: 2px solid #5393f7;
+}
+
+.btn-voltar:hover {
+    background-color: #5393f7;
+    color: white;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .detalhes-parceria-container {
+        padding: 15px;
+    }
+
+    .loja-detalhes h2 {
+        font-size: 28px;
+    }
+
+    .loja-detalhes p {
+        font-size: 16px;
+    }
+
+    .loja-imagem {
+        width: 150px;
+        height: 150px;
+    }
+}

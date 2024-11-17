@@ -5,7 +5,7 @@ import ParceriaSolicitada from 'components/ParceriaSolicitada';
 import './Parcerias.css';
 
 const Parcerias = () => {
-    return (
+  return (
     <div className='parcerias-geral-container'>
       <NovaParceria />
       <ParceriaAtual />
