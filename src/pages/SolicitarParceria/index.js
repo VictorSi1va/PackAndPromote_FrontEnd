@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom'; // Importa useNavigate
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import Title from 'components/Title';
 import Button from 'components/Button';
 import api from 'services/api';
@@ -12,13 +12,22 @@ const SolicitarParceria = () => {
     const [loja, setLoja] = useState(null); // Estado para armazenar os dados da loja
     const [loading, setLoading] = useState(true); // Indica se os dados estão carregando
     const [error, setError] = useState(null); // Estado para erros
+    const [imagemUrl, setImagemUrl] = useState('/images/lojas/default.png'); // Estado para armazenar a URL da imagem (com padrão)
+
     const idLojaLogada = parseInt(localStorage.getItem("@IdUser_PackAndPromote"));
 
     useEffect(() => {
         const fetchLoja = async () => {
             try {
                 const response = await api.get(`/Vendas/PesquisarLoja/${id}`);
-                setLoja(response.data);
+                const lojaData = response.data;
+
+                setLoja(lojaData);
+
+                // Atualiza a URL da imagem, caso exista
+                if (lojaData.idImagemLoja) {
+                    setImagemUrl(`${api.defaults.baseURL}Imagem/PesquisarImagem/${lojaData.idImagemLoja}`);
+                }
             } catch (err) {
                 setError(err.response?.data?.message || 'Erro ao buscar os dados da loja.');
             } finally {
@@ -32,7 +41,7 @@ const SolicitarParceria = () => {
     const handleSolicitarParceria = async () => {
         try {
             const parceriaSolicitacaoDto = {
-                IdLojaPromoter: parseInt(id) // ID da loja da URL
+                IdLojaPromoter: parseInt(id), // ID da loja da URL
             };
 
             const response = await api.post(`/Vendas/SolicitarParceria/${idLojaLogada}`, parceriaSolicitacaoDto);
@@ -58,8 +67,8 @@ const SolicitarParceria = () => {
 
             <div className="loja-detalhes">
                 <img
-                    src={loja.imagemUrl || "/images/default-loja.png"} // Adicione um fallback para a imagem
-                    alt={loja.nomeLoja}
+                    src={imagemUrl}
+                    alt={loja?.nomeLoja || "Loja"}
                     className="loja-imagem"
                 />
                 <h2><strong>{loja.nomeLoja}</strong></h2>

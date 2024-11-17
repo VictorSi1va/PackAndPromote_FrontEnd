@@ -12,12 +12,24 @@ const ParceriaSolicitada = () => {
       try {
         const userId = parseInt(localStorage.getItem("@IdUser_PackAndPromote"));
         const response = await api.get(`/Vendas/ListarParceriasSolicitadas/${userId}`);
-        const parceriasFormatadas = response.data.map(parceria => ({
-          idLojaPromoter: parceria.idLoja,
-          title: parceria.nomeLoja,
-          src: `/images/lojas/${parceria.idLoja}.png`,
-        }));
-        setParceriasSolicitadas(parceriasFormatadas);
+        const parceriasData = response.data;
+
+        // Busca imagens utilizando o IdImagemLoja
+        const parceriasComImagens = await Promise.all(
+          parceriasData.map(async (parceria) => {
+            let imageUrl = '/images/lojas/default.png'; // Imagem padrão
+            if (parceria.idImagemLoja) {
+              imageUrl = `${api.defaults.baseURL}Imagem/PesquisarImagem/${parceria.idImagemLoja}`;
+            }
+            return {
+              idLojaPromoter: parceria.idLoja,
+              title: parceria.nomeLoja,
+              src: imageUrl,
+            };
+          })
+        );
+
+        setParceriasSolicitadas(parceriasComImagens);
       } catch (err) {
         setError('Erro ao carregar parcerias solicitadas.');
       } finally {

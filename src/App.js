@@ -18,6 +18,7 @@ import PrivateRoute from "utils/PrivateRoute";
 import NotFound from "pages/NotFound";
 import SolicitarParceria from "pages/SolicitarParceria";
 import DetalhesParceria from "pages/DetalhesParceria";
+import TesteImagem from "pages/TesteImagem";
 
 function App() {
   return (
@@ -42,6 +43,8 @@ function App() {
             <Route path="detalhes-parceria/:id" element={<DetalhesParceria />} />
             <Route path="minha-conta" element={<MinhaConta />} />
             <Route path="logout" element={<Login />} />
+
+            <Route path="imagem" element={<TesteImagem />} />
           </Route>
 
           <Route path="*" element={<NotFound />} />
