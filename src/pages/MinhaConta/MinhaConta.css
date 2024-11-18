@@ -61,4 +61,33 @@
     .plano-section h2 {
         font-size: 28px;
     }
+
+    .plano-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .plano-details {
+        margin-bottom: 20px;
+    }
+
+    .plano-footer {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .plano-renova {
+        text-align: center;
+    }
+
+    .plano-buttons {
+        justify-content: center;
+    }
+
+    .title-group {
+        margin: 0px;
+    }
 }

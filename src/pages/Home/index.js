@@ -1,8 +1,7 @@
 import InfoBanner from "components/InfoBanner";
-import Banner from "components/Banner";
+import ComoFunciona from "pages/ComoFunciona";
 
 import "./Home.css";
-import ComoFunciona from "pages/ComoFunciona";
 
 export default function Home() {
     return (

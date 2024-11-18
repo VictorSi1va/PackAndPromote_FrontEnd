@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
+import { useAuthentication } from "context/Authentication";
 import "./InfoBanner.css";
 
 function InfoBanner({ titulo, subtitulo, conteudo, imagemUrl, corFundo, corTexto }) {
+    const { userLogged } = useAuthentication();
+
     return (
         <div className="info-banner" style={{ backgroundColor: corFundo, color: corTexto }}>
             <div className="info-banner-content">
@@ -13,11 +16,22 @@ function InfoBanner({ titulo, subtitulo, conteudo, imagemUrl, corFundo, corTexto
                             <li key={index} className="info-banner-paragraph">{paragrafo}</li>
                         ))}
                     </ul>
-                    <Link to="/cadastro-loja">
-                        <button className="info-banner-button">
-                            Cadastrar Loja
-                        </button>
-                    </Link>
+
+                    {
+                        userLogged() ? (
+                            <Link to="/parcerias">
+                                <button className="info-banner-button">
+                                    Visualizar Parcerias
+                                </button>
+                            </Link>
+                        ) : (
+                            <Link to="/cadastro-loja">
+                                <button className="info-banner-button">
+                                    Cadastrar Loja
+                                </button>
+                            </Link>
+                        )
+                    }
                 </div>
                 <div className="info-banner-image">
                     <img src={imagemUrl} alt="Info Banner Icon" className="info-banner-image-principal" />

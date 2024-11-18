@@ -17,6 +17,7 @@ import Rodape from "components/Rodape";
 import PrivateRoute from "utils/PrivateRoute";
 import NotFound from "pages/NotFound";
 import SolicitarParceria from "pages/SolicitarParceria";
+import AprovarParceria from "pages/AprovarParceria";
 import DetalhesParceria from "pages/DetalhesParceria";
 import TesteImagem from "pages/TesteImagem";
 
@@ -40,6 +41,7 @@ function App() {
           <Route element={<PrivateRoute role="ADMINISTRADOR,CLIENTE" />}>
             <Route path="parcerias" element={<Parcerias />} />
             <Route path="solicitar-parceria/:id" element={<SolicitarParceria />} />
+            <Route path="aprovar-parceria/:id" element={<AprovarParceria />} />
             <Route path="detalhes-parceria/:id" element={<DetalhesParceria />} />
             <Route path="minha-conta" element={<MinhaConta />} />
             <Route path="logout" element={<Login />} />
