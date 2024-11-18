@@ -2,10 +2,21 @@ import { Link } from 'react-router-dom';
 import './ParceriaCard.css';
 
 const ParceriaCard = ({ idLojaPromoter, title, src, tipoParceria }) => {
-  const linkTo =
-  tipoParceria === 'NovaParceria'
-    ? `/solicitar-parceria/${idLojaPromoter}`
-    : `/detalhes-parceria/${idLojaPromoter}`;
+  let linkTo;
+
+  switch (tipoParceria) {
+    case 'NovaParceria':
+      linkTo = `/solicitar-parceria/${idLojaPromoter}`;
+      break;
+    case 'AprovacaoParceria':
+      linkTo = `/aprovar-parceria/${idLojaPromoter}`;
+      break;
+    case 'ParceriaSolicitada':
+      linkTo = `/detalhes-parceria/${idLojaPromoter}`;
+      break;
+    default:
+      linkTo = `/detalhes-parceria/${idLojaPromoter}`;
+  }
 
   return (
     <Link to={linkTo}>

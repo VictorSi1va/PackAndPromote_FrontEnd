@@ -1,15 +1,21 @@
 import { FaFacebookF, FaTwitter, FaYoutube, FaInstagram } from 'react-icons/fa';
+import { useAuthentication } from "context/Authentication";
 import { Link } from "react-router-dom";
 import './Rodape.css';
 
 export default function Rodape() {
+    const { userLogged } = useAuthentication();
+
     return (
         <footer className="footer">
             <div className="footer-columns">
                 <div className="footer-column">
                     <h4><Link to="/">Pack and Promote</Link></h4>
                     <ul>
-                        <li><Link to="/cadastro-loja">Cadastre sua loja</Link></li>
+                        {
+                            !userLogged() &&
+                            <li><Link to="/cadastro-loja">Cadastre sua loja</Link></li>
+                        }
                         <li><Link to="/planos">Planos</Link></li>
                     </ul>
                 </div>

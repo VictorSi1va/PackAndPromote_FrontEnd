@@ -1,9 +1,12 @@
 import { Link } from "react-router-dom";
+import { useAuthentication } from "context/Authentication";
 import Button from "components/Button";
 
 import "./Planos.css";
 
 export default function Planos() {
+    const { userLogged } = useAuthentication();
+
     const planos = [
         {
             nome: "Plano Básico",
@@ -55,9 +58,18 @@ export default function Planos() {
                 ))}
             </div>
 
-            <Link to="/cadastro-loja">
-                <Button label="Cadastrar Loja" />
-            </Link>
+            {
+                userLogged() ?
+                    (
+                        <Link to="/minha-conta">
+                            <Button label="Alterar Plano" />
+                        </Link>
+                    ) : (
+                        <Link to="/cadastro-loja">
+                            <Button label="Cadastrar Loja" />
+                        </Link>
+                    )
+            }
         </div>
     );
 }
