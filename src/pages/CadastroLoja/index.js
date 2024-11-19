@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuthentication } from "context/Authentication";
 import InputMask from 'react-input-mask';
 import Select from 'components/Select';
 import CheckboxGroup from 'components/CheckboxGroup';
@@ -12,6 +13,7 @@ import api from 'services/api';
 import './CadastroLoja.css';
 
 const CadastroLoja = () => {
+    const { userLogged } = useAuthentication();
     const navigate = useNavigate();
 
     const [formData, setFormData] = useState({
@@ -188,22 +190,22 @@ const CadastroLoja = () => {
             newErrors.publicoAlvo = 'Selecione pelo menos uma opção';
             isValid = false;
         }
-    
+
         if (formData.idade.length === 0) {
             newErrors.idade = 'Selecione pelo menos uma opção';
             isValid = false;
         }
-    
+
         if (formData.regiao.length === 0) {
             newErrors.regiao = 'Selecione pelo menos uma opção';
             isValid = false;
         }
-    
+
         if (formData.preferenciaParcerias.length === 0) {
             newErrors.preferenciaParcerias = 'Selecione pelo menos uma opção';
             isValid = false;
         }
-    
+
         setErrors(newErrors);
         return isValid;
     };
@@ -276,150 +278,158 @@ const CadastroLoja = () => {
 
     return (
         <div className="cadastro-loja-container">
-            <Title titulo="Cadastro da Loja" />
+            {
+                userLogged() ? (
+                    <Link to="/parcerias">
+                        <Title titulo="Você já está logado!" titulo2="Para criar uma nova conta é necessário estar deslogado" />
+                    </Link>
+                ) : (
+                    <>
+                        <Title titulo="Cadastro da Loja" />
 
-            <form onSubmit={handleSubmit}>
-                <Input
-                    label="Usuário"
-                    name="usuario"
-                    value={formData.usuario}
-                    onChange={handleChange}
-                    placeholder="Digite o usuário"
-                    maxLength={100}
-                    error={errors.usuario}
-                />
+                        <form onSubmit={handleSubmit}>
+                            <Input
+                                label="Usuário"
+                                name="usuario"
+                                value={formData.usuario}
+                                onChange={handleChange}
+                                placeholder="Digite o usuário"
+                                maxLength={100}
+                                error={errors.usuario}
+                            />
 
-                <Input
-                    label="Senha"
-                    name="senha"
-                    value={formData.senha}
-                    onChange={handleChange}
-                    placeholder="Digite a senha"
-                    type="password"
-                    maxLength={100}
-                    error={errors.senha}
-                />
+                            <Input
+                                label="Senha"
+                                name="senha"
+                                value={formData.senha}
+                                onChange={handleChange}
+                                placeholder="Digite a senha"
+                                type="password"
+                                maxLength={100}
+                                error={errors.senha}
+                            />
 
-                <Input
-                    label="Nome da Loja"
-                    name="nomeDaLoja"
-                    value={formData.nomeDaLoja}
-                    onChange={handleChange}
-                    placeholder="Digite o nome da loja"
-                    maxLength={100}
-                    error={errors.nomeDaLoja}
-                />
+                            <Input
+                                label="Nome da Loja"
+                                name="nomeDaLoja"
+                                value={formData.nomeDaLoja}
+                                onChange={handleChange}
+                                placeholder="Digite o nome da loja"
+                                maxLength={100}
+                                error={errors.nomeDaLoja}
+                            />
 
-                <div className="input-group">
-                    <label>CNPJ</label>
-                    <InputMask
-                        mask="99.999.999/9999-99"
-                        name="cnpj"
-                        placeholder="Digite o CNPJ"
-                        value={formData.cnpj}
-                        onChange={handleChange}
-                    />
-                    {errors.cnpj && <span className="error-message">{errors.cnpj}</span>}
-                </div>
+                            <div className="input-group">
+                                <label>CNPJ</label>
+                                <InputMask
+                                    mask="99.999.999/9999-99"
+                                    name="cnpj"
+                                    placeholder="Digite o CNPJ"
+                                    value={formData.cnpj}
+                                    onChange={handleChange}
+                                />
+                                {errors.cnpj && <span className="error-message">{errors.cnpj}</span>}
+                            </div>
 
-                <Input
-                    label="Endereço"
-                    name="endereco"
-                    value={formData.endereco}
-                    onChange={handleChange}
-                    placeholder="Digite o endereço"
-                    maxLength={255}
-                    error={errors.endereco}
-                />
+                            <Input
+                                label="Endereço"
+                                name="endereco"
+                                value={formData.endereco}
+                                onChange={handleChange}
+                                placeholder="Digite o endereço"
+                                maxLength={255}
+                                error={errors.endereco}
+                            />
 
-                <div className="input-group">
-                    <label>Telefone</label>
-                    <InputMask
-                        mask="(99) 99999-9999"
-                        name="telefone"
-                        placeholder="Digite o telefone"
-                        value={formData.telefone}
-                        onChange={handleChange}
-                    />
-                    {errors.telefone && <span className="error-message">{errors.telefone}</span>}
-                </div>
+                            <div className="input-group">
+                                <label>Telefone</label>
+                                <InputMask
+                                    mask="(99) 99999-9999"
+                                    name="telefone"
+                                    placeholder="Digite o telefone"
+                                    value={formData.telefone}
+                                    onChange={handleChange}
+                                />
+                                {errors.telefone && <span className="error-message">{errors.telefone}</span>}
+                            </div>
 
-                <Input
-                    label="E-mail"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    placeholder="Digite o e-mail"
-                    maxLength={100}
-                    error={errors.email}
-                />
+                            <Input
+                                label="E-mail"
+                                name="email"
+                                value={formData.email}
+                                onChange={handleChange}
+                                placeholder="Digite o e-mail"
+                                maxLength={100}
+                                error={errors.email}
+                            />
 
-                <TextArea
-                    label="Descrição da Loja"
-                    name="descricaoDaLoja"
-                    value={formData.descricaoDaLoja}
-                    onChange={handleChange}
-                    placeholder="Digite uma breve descrição sobre a loja"
-                    maxLength={255}
-                    error={errors.descricaoDaLoja}
-                />
+                            <TextArea
+                                label="Descrição da Loja"
+                                name="descricaoDaLoja"
+                                value={formData.descricaoDaLoja}
+                                onChange={handleChange}
+                                placeholder="Digite uma breve descrição sobre a loja"
+                                maxLength={255}
+                                error={errors.descricaoDaLoja}
+                            />
 
-                <Select
-                    label="Categoria"
-                    name="categoria"
-                    value={formData.categoria}
-                    onChange={handleChange}
-                    options={categorias}
-                    error={errors.categoria}
-                />
+                            <Select
+                                label="Categoria"
+                                name="categoria"
+                                value={formData.categoria}
+                                onChange={handleChange}
+                                options={categorias}
+                                error={errors.categoria}
+                            />
 
-                <Select
-                    label="Plano"
-                    name="plano"
-                    value={formData.plano}
-                    onChange={handleChange}
-                    options={planos}
-                    error={errors.plano}
-                />
+                            <Select
+                                label="Plano"
+                                name="plano"
+                                value={formData.plano}
+                                onChange={handleChange}
+                                options={planos}
+                                error={errors.plano}
+                            />
 
-                <CheckboxGroup
-                    label="Público-Alvo"
-                    name="publicoAlvo"
-                    options={publicosAlvo}
-                    selectedOptions={formData.publicoAlvo}
-                    onChange={handleCheckboxGroupChange}
-                    error={errors.publicoAlvo}
-                />
+                            <CheckboxGroup
+                                label="Público-Alvo"
+                                name="publicoAlvo"
+                                options={publicosAlvo}
+                                selectedOptions={formData.publicoAlvo}
+                                onChange={handleCheckboxGroupChange}
+                                error={errors.publicoAlvo}
+                            />
 
-                <CheckboxGroup
-                    label="Idade"
-                    name="idade"
-                    options={idades}
-                    selectedOptions={formData.idade}
-                    onChange={handleCheckboxGroupChange}
-                    error={errors.idade}
-                />
+                            <CheckboxGroup
+                                label="Idade"
+                                name="idade"
+                                options={idades}
+                                selectedOptions={formData.idade}
+                                onChange={handleCheckboxGroupChange}
+                                error={errors.idade}
+                            />
 
-                <CheckboxGroup
-                    label="Região"
-                    name="regiao"
-                    options={regioes}
-                    selectedOptions={formData.regiao}
-                    onChange={handleCheckboxGroupChange}
-                    error={errors.regiao}
-                />
+                            <CheckboxGroup
+                                label="Região"
+                                name="regiao"
+                                options={regioes}
+                                selectedOptions={formData.regiao}
+                                onChange={handleCheckboxGroupChange}
+                                error={errors.regiao}
+                            />
 
-                <CheckboxGroup
-                    label="Preferência de Parcerias"
-                    name="preferenciaParcerias"
-                    options={preferenciasParcerias}
-                    selectedOptions={formData.preferenciaParcerias}
-                    onChange={handleCheckboxGroupChange}
-                    error={errors.preferenciaParcerias}
-                />
+                            <CheckboxGroup
+                                label="Preferência de Parcerias"
+                                name="preferenciaParcerias"
+                                options={preferenciasParcerias}
+                                selectedOptions={formData.preferenciaParcerias}
+                                onChange={handleCheckboxGroupChange}
+                                error={errors.preferenciaParcerias}
+                            />
 
-                <Button label="Cadastrar" type="submit" />
-            </form>
+                            <Button label="Cadastrar" type="submit" />
+                        </form>
+                    </>)}
         </div>
     );
 };

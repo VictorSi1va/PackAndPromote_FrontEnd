@@ -40,6 +40,9 @@ const MinhaConta = () => {
   const [preferenciasParcerias, setPreferenciasParcerias] = useState([]);
   const [planos, setPlanos] = useState([]);
 
+  const [userPhoto, setUserPhoto] = useState(null);
+  const [photoPreview, setPhotoPreview] = useState(null);
+
   // Função para buscar os dados da API
   const fetchData = async () => {
     try {
@@ -111,6 +114,11 @@ const MinhaConta = () => {
         value: plano.idPlano,
         label: plano.nomePlano
       })));
+
+      if (data.idLojaImagem) {
+        const photoUrl = `${api.defaults.baseURL}Imagem/PesquisarImagem/${data.idLojaImagem}`;
+        setPhotoPreview(photoUrl);
+      }
     } catch (error) {
       console.error("Erro ao buscar dados da API:", error);
     }
@@ -120,6 +128,49 @@ const MinhaConta = () => {
   useEffect(() => {
     fetchData();
   }, []);
+
+  const handlePhotoChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setUserPhoto(file);
+      setPhotoPreview(URL.createObjectURL(file));
+    }
+  };
+
+  const savePhoto = async () => {
+    if (!userPhoto) {
+      alert('Selecione uma imagem para salvar.');
+      return;
+    }
+
+    try {
+      const base64 = await convertToBase64(userPhoto);
+      const idUsuarioLogado = parseInt(localStorage.getItem("@IdUser_PackAndPromote"));
+
+      const imagemDto = {
+        DadosImagem: base64.split(',')[1], // Remove o prefixo "data:image/*;base64,"
+        TipoExtensao: userPhoto.type, // Tipo MIME da imagem, como "image/jpeg"
+        NomeImagem: userPhoto.name,
+      };
+
+      const response = await api.post(`/Imagem/SalvarImagem/${idUsuarioLogado}`, imagemDto);
+      const photoId = response.data;
+
+      alert('Foto de perfil atualizada com sucesso!');
+      setPhotoPreview(`${api.defaults.baseURL}Imagem/PesquisarImagem/${photoId}`);
+    } catch (error) {
+      console.error('Erro ao salvar foto de perfil:', error);
+      alert('Erro ao salvar foto de perfil.');
+    }
+  };
+
+  const convertToBase64 = (file) =>
+    new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = (error) => reject(error);
+    });
 
   const handleCheckboxGroupChange = (name, selectedOptions) => {
     setUserData(prevState => ({
@@ -144,7 +195,7 @@ const MinhaConta = () => {
   return (
     <div className="minha-conta-container">
       <div className="conta-section">
-        <Title titulo2="C o n t a" />
+        <Title titulo2="Conta" />
         <Input
           label="Nome da loja"
           name="lojaNome"
@@ -247,22 +298,43 @@ const MinhaConta = () => {
       </div>
 
       <div className="plano-section">
-        <Title titulo2="P l a n o" />
+        <div className="foto-section">
+          <Title titulo2="Foto de Perfil" />
+          <div className="foto-container">
+            {photoPreview ? (
+              <img
+                src={photoPreview}
+                alt="Foto do Usuário"
+                className="foto-preview"
+              />
+            ) : (
+              <p>Sem foto disponível</p>
+            )}
+            <input type="file" accept="image/*" onChange={handlePhotoChange} />
+            <Button label="Alterar Foto" onClick={savePhoto} />
+          </div>
+        </div>
+
+        <Title titulo2="Plano" />
         <div className="plano-details">
           <h3 className="plano-name">{planoData.nomePlano}</h3>
           <p>{planoData.quantidadeEmbalagensEntregues} embalagens entregues</p>
           <p>Média de {planoData.mediaEntregas} entregas por dia</p>
           <p>Plano {planoData.tipoPlano}</p>
-        </div>
-        <div className="plano-footer">
           <div className="plano-renova">
             <span>Renova em {planoData.dataRenovacao}</span>
           </div>
-          {/* <div className="plano-buttons">
+        </div>
+
+        {/* <div className="plano-footer">
+          <div className="plano-renova">
+            <span>Renova em {planoData.dataRenovacao}</span>
+          </div>
+          <div className="plano-buttons">
             <Button label="Trocar Plano" onClick={() => alert('Plano trocado com sucesso!')} />
             <Button label="Cancelar" onClick={() => alert('Plano cancelado com sucesso!')} cancel />
-          </div> */}
-        </div>
+          </div>
+        </div> */}
       </div>
     </div>
   );
