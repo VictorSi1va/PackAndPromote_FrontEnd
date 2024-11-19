@@ -32,6 +32,9 @@
     background-color: #f0f0f0;
     padding: 12px;
     border-radius: 20px;
+
+    align-items: center;
+    text-align: center;
 }
 
 /* Para manter os elementos em colunas no desktop */
@@ -41,6 +44,35 @@
 
 .plano-section {
     order: 2;
+    align-items: center;
+    text-align: center;
+}
+
+.foto-section {
+    margin-bottom: 60px;
+}
+
+.foto-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.foto-preview {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    text-align: center;
+    padding: 10px;
+    border-radius: 20px;
+    background-color: transparent;
+    box-shadow: none;
+    transition: transform 0.3s ease;
+}
+
+.foto-preview:hover {
+    transform: translateY(-5px);
 }
 
 /* Estilos responsivos para telas menores */
