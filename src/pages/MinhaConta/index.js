@@ -187,11 +187,33 @@ const MinhaConta = () => {
     });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    alert('Informações alteradas com sucesso!');
+  const handleSubmit = async () => {
+    const userId = parseInt(localStorage.getItem("@IdUser_PackAndPromote"));
+  
+    const usuarioAlteradoDto = {
+      NomeLoja: userData.lojaNome,
+      EnderecoLoja: userData.endereco,
+      TelefoneLoja: userData.telefone,
+      CNPJLoja: userData.cnpj,
+      EmailLoja: userData.email,
+      DescricaoLoja: userData.descricao,
+      IdCategoria: userData.categoria,
+      IdPlano: userData.plano,
+      FaixaEtaria: userData.idade,
+      PreferenciaAlvo: userData.preferenciaParceria,
+      PublicoAlvo: userData.publicoAlvo,
+      RegiaoAlvo: userData.regiao,
+    };
+  
+    try {
+      const response = await api.put(`/Login/AlterarUsuario/${userId}`, usuarioAlteradoDto);
+      alert("Informações alteradas com sucesso!");
+    } catch (error) {
+      console.error("Erro ao alterar usuário:", error);
+      alert("Ocorreu um erro ao alterar os dados. Por favor, tente novamente.");
+    }
   };
-
+  
   return (
     <div className="minha-conta-container">
       <div className="conta-section">
