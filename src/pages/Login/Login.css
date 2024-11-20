@@ -122,7 +122,7 @@
         padding: 20px;
     }
     .login-logo-section {
-        margin: 20px;
+        margin-top: 0px;
     }
     .login-box-section {
         width: 100%;
@@ -139,7 +139,7 @@
         font-size: 20px;
     }
     .login-logo-section {
-        margin: 20px;
+        margin-top: 0px;
     }
     .login-box-section {
         padding: 15px;

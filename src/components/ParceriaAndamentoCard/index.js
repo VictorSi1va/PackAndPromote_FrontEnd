@@ -1,4 +1,3 @@
-import React from 'react';
 import './ParceriaAndamentoCard.css';
 
 const ParceriaAndamentoCard = ({

@@ -1,6 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthenticationProvider } from "context/Authentication";
-import './App.css';
 import Faq from "./pages/Faq";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
@@ -10,16 +9,18 @@ import QuemSomos from "./pages/QuemSomos";
 import CadastroLoja from "pages/CadastroLoja";
 import MinhaConta from "pages/MinhaConta";
 import Parcerias from "pages/Parcerias";
+import SolicitarParceria from "pages/SolicitarParceria";
+import AprovarParceria from "pages/AprovarParceria";
+import DetalhesParceria from "pages/DetalhesParceria";
+import TesteImagem from "pages/TesteImagem";
+import NotFound from "pages/NotFound";
 
 import DefaultPage from "./components/DefaultPage";
 import Menu from "./components/Menu";
 import Rodape from "components/Rodape";
 import PrivateRoute from "utils/PrivateRoute";
-import NotFound from "pages/NotFound";
-import SolicitarParceria from "pages/SolicitarParceria";
-import AprovarParceria from "pages/AprovarParceria";
-import DetalhesParceria from "pages/DetalhesParceria";
-import TesteImagem from "pages/TesteImagem";
+
+import './App.css';
 
 function App() {
   return (

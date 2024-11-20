@@ -29,7 +29,7 @@ const AprovarParceria = () => {
                     setImagemUrl(`${api.defaults.baseURL}Imagem/PesquisarImagem/${lojaData.idImagemLoja}`);
                 }
             } catch (err) {
-                setError(err.response?.data?.message || 'Erro ao buscar os dados da loja.');
+                setError(err.response?.data || 'Erro ao buscar os dados da loja.');
             } finally {
                 setLoading(false);
             }
@@ -48,7 +48,7 @@ const AprovarParceria = () => {
             alert(response.data); // Mensagem de sucesso da API
             navigate('/parcerias'); // Redireciona para a página de Parcerias
         } catch (err) {
-            const errorMsg = err.response?.data?.message || 'Erro ao aprovar parceria.';
+            const errorMsg = err.response?.data || 'Erro ao aprovar parceria.';
             alert(errorMsg);
         }
     };

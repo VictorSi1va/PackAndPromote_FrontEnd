@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useAuthentication } from "context/Authentication";
+
 import "./InfoBanner.css";
 
 function InfoBanner({ titulo, subtitulo, conteudo, imagemUrl, corFundo, corTexto }) {
