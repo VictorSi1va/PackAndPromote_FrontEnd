@@ -27,7 +27,7 @@
 .parceria-logo {
     width: 80%;
     height: 80%;
-    object-fit: contain;
+    object-fit: cover;
     border-radius: 12px;
 }
 

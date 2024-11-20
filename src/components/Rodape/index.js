@@ -1,6 +1,7 @@
 import { FaFacebookF, FaTwitter, FaYoutube, FaInstagram } from 'react-icons/fa';
 import { useAuthentication } from "context/Authentication";
 import { Link } from "react-router-dom";
+
 import './Rodape.css';
 
 export default function Rodape() {

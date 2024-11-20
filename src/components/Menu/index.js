@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuthentication } from "context/Authentication";
+
 import './Menu.css';
 
 export default function Menu() {

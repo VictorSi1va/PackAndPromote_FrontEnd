@@ -1,7 +1,5 @@
 import Banner from "components/Banner";
 
-import "./ComoFunciona.css";
-
 export default function ComoFunciona() {
     return (
         <div className="como-funciona-page">
