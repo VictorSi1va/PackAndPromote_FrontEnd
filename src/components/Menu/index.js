@@ -5,18 +5,21 @@ import { useAuthentication } from "context/Authentication";
 import './Menu.css';
 
 export default function Menu() {
-    const [menuOpen, setMenuOpen] = useState(false);
-    const { userLogged, signOut } = useAuthentication();
+    const [menuOpen, setMenuOpen] = useState(false); // Estado para abrir/fechar o menu no modo mobile.
+    const { userLogged, signOut } = useAuthentication(); // Contexto para verificar autenticação e realizar logout.
     const navigate = useNavigate();
 
+    // Alterna o estado do menu (aberto ou fechado).
     const toggleMenu = () => {
         setMenuOpen(!menuOpen);
     };
 
+    // Fecha o menu ao clicar em um link.
     const handleLinkClick = () => {
         setMenuOpen(false);
     };
 
+    // Realiza o logout e redireciona para a página inicial.
     const handleLogout = () => {
         signOut();
         setMenuOpen(false);
@@ -51,27 +54,28 @@ export default function Menu() {
                 <div className={`menu-items-right ${menuOpen ? "menu-open" : ""}`}>
                     <ul className="menu-links">
                         {userLogged() ? (
-                            <li><Link to="/parcerias">Parcerias</Link></li>
+                            <li><Link to="/parcerias" onClick={handleLinkClick}>Parcerias</Link></li>
                         ) : (
                             <>
-                                <li><Link to="/cadastro-loja">Cadastrar Loja</Link></li>
-                                <li><Link to="/planos">Planos</Link></li>
-                                <li><Link to="/como-funciona">Como Funciona</Link></li>
+                                <li><Link to="/cadastro-loja" onClick={handleLinkClick}>Cadastrar Loja</Link></li>
+                                <li><Link to="/planos" onClick={handleLinkClick}>Planos</Link></li>
+                                <li><Link to="/como-funciona" onClick={handleLinkClick}>Como Funciona</Link></li>
                             </>
                         )}
 
-                        <li><Link to="/quem-somos">Quem Somos</Link></li>
-                        <li><Link to="/faq">FAQ</Link></li>
+                        <li><Link to="/quem-somos" onClick={handleLinkClick}>Quem Somos</Link></li>
+                        <li><Link to="/faq" onClick={handleLinkClick}>FAQ</Link></li>
 
                         {userLogged() && (
-                            <Link to="/minha-conta">Minha Conta</Link>
+                            <li><Link to="/minha-conta" onClick={handleLinkClick}>Minha Conta</Link></li>
                         )}
                     </ul>
+
                     <div className="menu-login">
                         {userLogged() ? (
                             <button className="menu-login" onClick={handleLogout}>Sair</button>
                         ) : (
-                            <Link to="/login">Entrar</Link>
+                            <Link to="/login" onClick={handleLinkClick}>Entrar</Link>
                         )}
                     </div>
                 </div>
